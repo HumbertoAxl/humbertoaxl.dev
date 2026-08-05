@@ -1,0 +1,22 @@
+html {
+  scroll-padding-top: 64px;
+}
+
+body {
+  min-width: 320px;
+}
+
+::selection {
+  background: rgba(91, 141, 232, 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

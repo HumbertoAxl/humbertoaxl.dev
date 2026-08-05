@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-03T12:30:53.4885023Z",
+  "title": "Design System: Humberto Axl Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "orbital-blue": {
+        "role": "primary",
+        "displayName": "Orbital Blue",
+        "canonical": "#5b8de8",
+        "tonalRamp": ["#07152b", "#102d59", "#1d4788", "#3567ba", "#5b8de8", "#8db1f2", "#bfd3f9", "#edf4ff"]
+      },
+      "midnight-navy": {
+        "role": "neutral",
+        "displayName": "Midnight Navy",
+        "canonical": "#0d1526",
+        "tonalRamp": ["#050811", "#0d1526", "#1a2741", "#30415f", "#536783", "#8192aa", "#b8c3d1", "#eef2f7"]
+      },
+      "module-navy": {
+        "role": "neutral",
+        "displayName": "Module Navy",
+        "canonical": "#1a2540",
+        "tonalRamp": ["#080c16", "#11192b", "#1a2540", "#31405f", "#546685", "#8393aa", "#bac4d2", "#eff2f7"]
+      },
+      "starlight": {
+        "role": "neutral",
+        "displayName": "Starlight",
+        "canonical": "#e8edf7",
+        "tonalRamp": ["#181b21", "#343a45", "#596273", "#828da1", "#aab4c6", "#cbd3e1", "#e8edf7", "#f8faff"]
+      },
+      "signal-slate": {
+        "role": "neutral",
+        "displayName": "Signal Slate",
+        "canonical": "#8fa3c0",
+        "tonalRamp": ["#121923", "#263449", "#405775", "#607b9d", "#8fa3c0", "#b2c0d2", "#d3dce8", "#f3f6fa"]
+      },
+      "mission-blue": {
+        "role": "secondary",
+        "displayName": "Mission Blue",
+        "canonical": "#3d6ad6",
+        "tonalRamp": ["#071329", "#102956", "#1d4286", "#2a58b7", "#3d6ad6", "#7897e4", "#b1c2f0", "#edf2ff"]
+      },
+      "nebula-violet": {
+        "role": "secondary",
+        "displayName": "Nebula Violet",
+        "canonical": "#7c4fc8",
+        "tonalRamp": ["#170b29", "#311657", "#4d2785", "#663db0", "#7c4fc8", "#a17bd9", "#c9b1e9", "#f3edfb"]
+      },
+      "telemetry-mint": {
+        "role": "secondary",
+        "displayName": "Telemetry Mint",
+        "canonical": "#00c9a7",
+        "tonalRamp": ["#00261f", "#004d41", "#007562", "#009f84", "#00c9a7", "#54ddc4", "#9deee0", "#e7fbf7"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Identity Display",
+        "purpose": "The two-line hero introduction and rare identity-defining statements."
+      },
+      "headline": {
+        "displayName": "Section Coordinate",
+        "purpose": "Uppercase role labels and section headings with wide tracking."
+      },
+      "title": {
+        "displayName": "Evidence Title",
+        "purpose": "Employer names and skill categories."
+      },
+      "body": {
+        "displayName": "Working Copy",
+        "purpose": "Readable professional narrative and evidence."
+      },
+      "label": {
+        "displayName": "Telemetry Label",
+        "purpose": "Dates, statuses, and compact metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-rest",
+        "value": "0 2px 8px rgba(0,0,0,0.05)",
+        "purpose": "Quiet separation for grouped cards and biography content."
+      },
+      {
+        "name": "panel-hover",
+        "value": "0 8px 24px rgba(0,0,0,0.1)",
+        "purpose": "Ambient response for interactive or focused panels."
+      },
+      {
+        "name": "navigation-scrolled",
+        "value": "0 2px 16px rgba(0,0,0,0.08)",
+        "purpose": "Separates the translucent navigation after scrolling."
+      },
+      {
+        "name": "portrait-orbit",
+        "value": "0 12px 48px rgba(91,141,232,0.2), 0 4px 16px rgba(0,0,0,0.1)",
+        "purpose": "Makes the real profile image the strongest human focal point."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-quick",
+        "value": "200ms ease",
+        "purpose": "Navigation indicators, card lift, and simple hover states."
+      },
+      {
+        "name": "surface-shift",
+        "value": "300ms ease",
+        "purpose": "Navigation background, border, and shadow transitions."
+      },
+      {
+        "name": "theme-fade",
+        "value": "500ms ease",
+        "purpose": "Crossfades the dark star field and light technical grid."
+      },
+      {
+        "name": "entrance-soft",
+        "value": "600ms ease-out",
+        "purpose": "One-time section reveal without elastic motion."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "600px" },
+      { "name": "md", "value": "900px" },
+      { "name": "lg", "value": "1200px" },
+      { "name": "xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single highest-value action on a surface.",
+      "html": "<button class=\"ds-btn-primary\">View My Work</button>",
+      "css": ".ds-btn-primary { background:#5b8de8; color:#fff; border:1px solid #5b8de8; border-radius:16px; padding:16px 40px; font:600 1.05rem/1.4 Inter,sans-serif; cursor:pointer; transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease; } .ds-btn-primary:hover { background:#6d9bed; transform:translateY(-2px); box-shadow:0 8px 24px rgba(91,141,232,.22); } .ds-btn-primary:focus-visible { outline:3px solid rgba(91,141,232,.45); outline-offset:3px; }"
+    },
+    {
+      "name": "Secondary Action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A quieter parallel action that does not compete with the primary CTA.",
+      "html": "<button class=\"ds-btn-secondary\">About Me</button>",
+      "css": ".ds-btn-secondary { background:transparent; color:#5b8de8; border:1px solid rgba(91,141,232,.65); border-radius:16px; padding:16px 40px; font:600 1.05rem/1.4 Inter,sans-serif; cursor:pointer; transition:background-color .2s ease,border-color .2s ease,transform .2s ease; } .ds-btn-secondary:hover { background:rgba(91,141,232,.08); border-color:#5b8de8; transform:translateY(-2px); } .ds-btn-secondary:focus-visible { outline:3px solid rgba(91,141,232,.45); outline-offset:3px; }"
+    },
+    {
+      "name": "Evidence Panel",
+      "kind": "card",
+      "refersTo": "panel-dark",
+      "description": "A restrained module for professional evidence and grouped content.",
+      "html": "<article class=\"ds-evidence-panel\"><span class=\"ds-evidence-label\">FEB 2023 — PRESENT</span><h3>Western Australian Public Sector</h3><p>Designed and implemented production features across Angular applications and .NET APIs.</p></article>",
+      "css": ".ds-evidence-panel { background:#1a2540; color:#e8edf7; border:1px solid rgba(143,163,192,.22); border-radius:16px; padding:24px; max-width:520px; font-family:Inter,sans-serif; box-shadow:0 2px 8px rgba(0,0,0,.05); transition:transform .2s ease,box-shadow .2s ease; } .ds-evidence-panel:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.1); } .ds-evidence-panel h3 { margin:8px 0 12px; font-size:1.25rem; line-height:1.2; } .ds-evidence-panel p { margin:0; color:#8fa3c0; line-height:1.8; } .ds-evidence-label { color:#5b8de8; font-size:.72rem; font-weight:700; letter-spacing:.08em; } .ds-evidence-panel:focus-within { outline:3px solid rgba(91,141,232,.35); outline-offset:3px; }"
+    },
+    {
+      "name": "Skill Chip",
+      "kind": "chip",
+      "refersTo": "chip-outline",
+      "description": "Compact technical metadata with deliberately low visual weight.",
+      "html": "<span class=\"ds-skill-chip\">TypeScript</span>",
+      "css": ".ds-skill-chip { display:inline-flex; align-items:center; min-height:24px; padding:3px 8px; color:#8fa3c0; background:transparent; border:1px solid rgba(143,163,192,.28); border-radius:999px; font:500 .72rem/1.3 Inter,sans-serif; transition:border-color .2s ease,color .2s ease; } .ds-skill-chip:hover { color:#e8edf7; border-color:rgba(91,141,232,.65); } .ds-skill-chip:focus-visible { outline:2px solid #5b8de8; outline-offset:2px; }"
+    },
+    {
+      "name": "Portfolio Navigation",
+      "kind": "nav",
+      "description": "A stable identity anchor with quiet section coordinates and one active signal.",
+      "html": "<nav class=\"ds-nav\"><strong>Humberto Axl</strong><div><a class=\"ds-nav-active\" href=\"#home\">HOME</a><a href=\"#experience\">EXPERIENCE</a><a href=\"#skills\">SKILLS</a><a href=\"#about\">ABOUT</a></div></nav>",
+      "css": ".ds-nav { min-height:64px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; color:#e8edf7; background:rgba(13,21,38,.85); border-bottom:1px solid rgba(143,163,192,.18); font-family:Inter,sans-serif; } .ds-nav strong { font-size:1.25rem; } .ds-nav div { display:flex; align-items:center; gap:8px; } .ds-nav a { position:relative; padding:20px 10px; color:#8fa3c0; text-decoration:none; font-size:.82rem; font-weight:500; } .ds-nav a:hover,.ds-nav a:focus-visible { color:#e8edf7; } .ds-nav a:focus-visible { outline:2px solid #5b8de8; outline-offset:-4px; } .ds-nav .ds-nav-active { color:#5b8de8; } .ds-nav .ds-nav-active::after { content:''; position:absolute; left:20%; right:20%; bottom:12px; height:2px; border-radius:8px; background:#5b8de8; }"
+    },
+    {
+      "name": "Section Coordinate",
+      "kind": "custom",
+      "description": "The repeated heading marker that turns page sections into plotted coordinates.",
+      "html": "<header class=\"ds-section-coordinate\"><h2>EXPERIENCE</h2><span aria-hidden=\"true\"></span><p>A timeline of professional work and delivered impact.</p></header>",
+      "css": ".ds-section-coordinate { text-align:center; font-family:Inter,sans-serif; color:#e8edf7; } .ds-section-coordinate h2 { margin:0; color:#5b8de8; font-size:1.5rem; font-weight:700; line-height:1.3; letter-spacing:4px; } .ds-section-coordinate span { display:block; width:6px; height:6px; margin:12px auto; border-radius:50%; background:#5b8de8; } .ds-section-coordinate p { max-width:480px; margin:16px auto 0; color:#8fa3c0; line-height:1.8; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Orbital Workshop",
+    "overview": "The portfolio feels like a working observatory rather than a sci-fi spectacle: technically precise, quietly confident, exploratory, and human. A deep-space canvas provides atmosphere while clear type, direct language, and conventional interaction patterns keep the hiring evidence easy to evaluate. The visual system earns identity through a small number of committed signals: orbital blue, sparse stellar motion, circular geometry around the portrait, and restrained module-like surfaces. The cosmic layer is environmental rather than ornamental; content stays calm and credible above it.",
+    "keyCharacteristics": [
+      "Deep navy environment with cool blue navigational emphasis",
+      "Oversized, tightly set display type paired with highly legible body copy",
+      "Sparse circular and orbital motifs concentrated around identity moments",
+      "Soft tonal layering, fine borders, and restrained ambient lift",
+      "A responsive light mode that translates the identity into a subtle technical grid"
+    ],
+    "rules": [
+      { "name": "The Single Signal Rule", "body": "Orbital Blue is the portfolio-wide action color. Timeline accents may identify individual roles, but they do not replace it for global navigation or calls to action.", "section": "colors" },
+      { "name": "The Content Above Cosmos Rule", "body": "Stellar colors belong to the atmospheric layer. Text and controls must always resolve to the core semantic palette for dependable contrast.", "section": "colors" },
+      { "name": "The Scale Carries Identity Rule", "body": "Keep Inter straightforward; create hierarchy through real changes in scale and weight, not gratuitous italics, serif cameos, or decorative effects.", "section": "typography" },
+      { "name": "The Ambient, Not Floating Rule", "body": "Shadows suggest light cast through the environment; borders and tonal shifts still define the structure.", "section": "elevation" },
+      { "name": "The Orbits Are Rare Rule", "body": "Full circles mark identity, position, or status. Do not turn every container or icon into a floating bubble.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep professional evidence and calls to action visually clearer than the star field.",
+      "Do concentrate cosmic expression in the canvas, portrait orbit, section waypoints, and restrained ambient light.",
+      "Do use the responsive dark and light semantic palettes rather than hard-coding text colors inside components.",
+      "Do preserve generous body leading and bounded reading widths for fast recruiter scanning.",
+      "Do use job accent colors only within the experience timeline."
+    ],
+    "donts": [
+      "Don't turn the interface into a literal spaceship dashboard or cover content with decorative telemetry.",
+      "Don't introduce generic developer-site tropes such as glowing code windows, floating technology logos, glass cards everywhere, or gratuitous gradients.",
+      "Don't use thick one-sided card borders as a default accent treatment.",
+      "Don't use bounce or elastic easing for navigational motion.",
+      "Don't let every surface become rounded, elevated, and independently framed; preserve hierarchy through grouping and negative space."
+    ]
+  }
+}

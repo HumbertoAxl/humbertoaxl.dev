@@ -1,18 +1,17 @@
-import { Grid, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import Timeline from './ui/Timeline';
+import SectionHeader from './ui/SectionHeader';
 
 const WorkExperience = () => {
   return (
-    <Grid container sx={{ backgroundColor: '#1c2949' }}>
-      <Grid size={12}>
-        <Typography variant="h4" align="center">
-          Work Experience
-        </Typography>
-      </Grid>
-      <Grid size={12}>
+    <Box id="experience" sx={{ py: { xs: 6, md: 8 }, px: { xs: 3, md: 6 } }}>
+        <SectionHeader
+          title="Experience"
+          description="A timeline of my professional journey, the challenges I've tackled, and the impact I've delivered."
+        />
+
         <Timeline />
-      </Grid>
-    </Grid>
+    </Box>
   );
 };
 
