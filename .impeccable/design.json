@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-12T00:00:00.000Z",
+  "title": "Design System: Humberto Axl Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "orbital-blue": {
+        "role": "primary",
+        "displayName": "Orbital Blue",
+        "canonical": "#5b8de8",
+        "tonalRamp": ["#07152b", "#102d59", "#1d4788", "#3567ba", "#5b8de8", "#8db1f2", "#bfd3f9", "#edf4ff"]
+      },
+      "midnight-navy": {
+        "role": "neutral",
+        "displayName": "Midnight Navy",
+        "canonical": "#0d1526",
+        "tonalRamp": ["#050811", "#0d1526", "#1a2741", "#30415f", "#536783", "#8192aa", "#b8c3d1", "#eef2f7"]
+      },
+      "hero-midnight": {
+        "role": "neutral",
+        "displayName": "Hero Midnight",
+        "canonical": "#071022",
+        "tonalRamp": ["#030711", "#071022", "#12233e", "#253b5e", "#496080", "#788ca9", "#b2bfd0", "#edf2f7"]
+      },
+      "module-navy": {
+        "role": "neutral",
+        "displayName": "Module Navy",
+        "canonical": "#1a2540",
+        "tonalRamp": ["#080c16", "#11192b", "#1a2540", "#31405f", "#546685", "#8393aa", "#bac4d2", "#eff2f7"]
+      },
+      "starlight": {
+        "role": "neutral",
+        "displayName": "Starlight",
+        "canonical": "#e8edf7",
+        "tonalRamp": ["#181b21", "#343a45", "#596273", "#828da1", "#aab4c6", "#cbd3e1", "#e8edf7", "#f8faff"]
+      },
+      "signal-slate": {
+        "role": "neutral",
+        "displayName": "Signal Slate",
+        "canonical": "#8fa3c0",
+        "tonalRamp": ["#121923", "#263449", "#405775", "#607b9d", "#8fa3c0", "#b2c0d2", "#d3dce8", "#f3f6fa"]
+      },
+      "daylight-plum": {
+        "role": "primary",
+        "displayName": "Daylight Plum",
+        "canonical": "#6b5278",
+        "tonalRamp": ["#1d1123", "#33203b", "#4b3555", "#6b5278", "#8b7198", "#ad96b7", "#d3c4d8", "#f6f0f7"]
+      },
+      "daylight-ink": {
+        "role": "neutral",
+        "displayName": "Daylight Ink",
+        "canonical": "#27232a",
+        "tonalRamp": ["#171419", "#27232a", "#403a44", "#5e5762", "#817984", "#a69fa8", "#d1ccd2", "#f5f2f5"]
+      },
+      "daylight-paper": {
+        "role": "neutral",
+        "displayName": "Daylight Paper",
+        "canonical": "#f3f0e9",
+        "tonalRamp": ["#201e19", "#413d34", "#625d51", "#878175", "#aca69a", "#cec9bf", "#e7e3da", "#f8f6f1"]
+      },
+      "daylight-module": {
+        "role": "neutral",
+        "displayName": "Daylight Module",
+        "canonical": "#e4ded9",
+        "tonalRamp": ["#211d1a", "#423a35", "#655c55", "#8a817a", "#afa8a2", "#d0cbc7", "#e4ded9", "#faf8f6"]
+      },
+      "daylight-muted": {
+        "role": "neutral",
+        "displayName": "Daylight Muted",
+        "canonical": "#514e55",
+        "tonalRamp": ["#19171b", "#2d2a30", "#454149", "#625e67", "#837e87", "#a7a2aa", "#d0ccd2", "#f5f2f5"]
+      },
+      "mission-blue": {
+        "role": "secondary",
+        "displayName": "Mission Blue",
+        "canonical": "#3d6ad6",
+        "tonalRamp": ["#071329", "#102956", "#1d4286", "#2a58b7", "#3d6ad6", "#7897e4", "#b1c2f0", "#edf2ff"]
+      },
+      "nebula-violet": {
+        "role": "secondary",
+        "displayName": "Nebula Violet",
+        "canonical": "#7c4fc8",
+        "tonalRamp": ["#170b29", "#311657", "#4d2785", "#663db0", "#7c4fc8", "#a17bd9", "#c9b1e9", "#f3edfb"]
+      },
+      "telemetry-mint": {
+        "role": "secondary",
+        "displayName": "Telemetry Mint",
+        "canonical": "#00c9a7",
+        "tonalRamp": ["#00261f", "#004d41", "#007562", "#009f84", "#00c9a7", "#54ddc4", "#9deee0", "#e7fbf7"]
+      }
+    },
+    "typographyMeta": {
+      "identity-dark": {
+        "displayName": "Dark Identity",
+        "purpose": "The hero name and role in the orbital dark expression, using the same Inter hierarchy as light mode."
+      },
+      "identity-light": {
+        "displayName": "Light Identity",
+        "purpose": "The hero name and role in the daylight expression, using the same Inter hierarchy as dark mode."
+      },
+      "headline": {
+        "displayName": "Section Coordinate",
+        "purpose": "Uppercase section headings with wide tracking."
+      },
+      "title": {
+        "displayName": "Evidence Title",
+        "purpose": "Employer, skill-group, and contact titles."
+      },
+      "body": {
+        "displayName": "Working Copy",
+        "purpose": "Readable professional narrative and evidence."
+      },
+      "label": {
+        "displayName": "Compact Label",
+        "purpose": "Dates, statuses, chips, and form labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-rest",
+        "value": "0 2px 8px rgba(0,0,0,0.05)",
+        "purpose": "Quiet separation for grouped evidence."
+      },
+      {
+        "name": "panel-hover",
+        "value": "0 8px 24px rgba(0,0,0,0.1)",
+        "purpose": "Restrained response for interactive surfaces."
+      },
+      {
+        "name": "navigation-dark",
+        "value": "0 5px 18px rgba(2,3,12,0.13)",
+        "purpose": "Low ambient separation for scrolled dark navigation."
+      },
+      {
+        "name": "navigation-light",
+        "value": "0 4px 14px rgba(39,35,42,0.07)",
+        "purpose": "Warm shallow separation for scrolled light navigation."
+      },
+      {
+        "name": "portrait-dark",
+        "value": "0 18px 60px rgba(91,141,232,0.20)",
+        "purpose": "The strongest dark identity glow around the real portrait."
+      },
+      {
+        "name": "portrait-light",
+        "value": "0 18px 52px rgba(39,35,42,0.13)",
+        "purpose": "Soft editorial lift around the light portrait."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-quick",
+        "value": "200ms ease",
+        "purpose": "Navigation indicators and simple hover states."
+      },
+      {
+        "name": "toggle-springless",
+        "value": "260ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Theme-toggle thumb travel without bounce."
+      },
+      {
+        "name": "surface-shift",
+        "value": "300ms ease",
+        "purpose": "Navigation background, border, blur, and shadow transitions."
+      },
+      {
+        "name": "theme-canvas",
+        "value": "400ms ease",
+        "purpose": "Document background color changes between modes."
+      },
+      {
+        "name": "hero-entrance",
+        "value": "720ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "One-time hero reveal, disabled when reduced motion is requested."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "600px" },
+      { "name": "md", "value": "900px" },
+      { "name": "lg", "value": "1200px" },
+      { "name": "xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Dark Primary Action",
+      "kind": "button",
+      "refersTo": "button-dark-primary",
+      "description": "The primary hero action in dark mode.",
+      "html": "<button class=\"ds-btn-dark-primary\">View Experience</button>",
+      "css": ".ds-btn-dark-primary { min-height:52px; padding:14px 36px; border:1px solid #5b8de8; border-radius:16px; background:#5b8de8; color:#fff; font:700 1rem/1.5 Inter,sans-serif; cursor:pointer; transition:background-color .2s ease,box-shadow .2s ease; } .ds-btn-dark-primary:hover { background:#6d9bed; box-shadow:0 8px 24px rgba(91,141,232,.2); } .ds-btn-dark-primary:active { background:#4c7fd8; } .ds-btn-dark-primary:focus-visible { outline:3px solid rgba(91,141,232,.42); outline-offset:3px; }"
+    },
+    {
+      "name": "Light Primary Action",
+      "kind": "button",
+      "refersTo": "button-light-primary",
+      "description": "The primary hero action in light mode.",
+      "html": "<button class=\"ds-btn-light-primary\">View Experience</button>",
+      "css": ".ds-btn-light-primary { min-height:52px; padding:14px 36px; border:1px solid #6b5278; border-radius:16px; background:#6b5278; color:#fff; font:700 1rem/1.5 Inter,sans-serif; cursor:pointer; transition:background-color .2s ease,box-shadow .2s ease; } .ds-btn-light-primary:hover { background:#7b6188; box-shadow:0 8px 24px rgba(107,82,120,.16); } .ds-btn-light-primary:active { background:#5d4769; } .ds-btn-light-primary:focus-visible { outline:3px solid rgba(107,82,120,.32); outline-offset:3px; }"
+    },
+    {
+      "name": "Dark Secondary Action",
+      "kind": "button",
+      "refersTo": "button-dark-secondary",
+      "description": "A quieter parallel action illustrated in the dark theme; its signal color follows the active theme.",
+      "html": "<button class=\"ds-btn-secondary\">Contact me</button>",
+      "css": ".ds-btn-secondary { min-height:52px; padding:14px 36px; border:1px solid rgba(91,141,232,.68); border-radius:16px; background:rgba(13,21,38,.38); color:#5b8de8; font:700 1rem/1.5 Inter,sans-serif; cursor:pointer; transition:background-color .2s ease,border-color .2s ease; } .ds-btn-secondary:hover { background:rgba(91,141,232,.08); border-color:#5b8de8; } .ds-btn-secondary:active { background:rgba(91,141,232,.14); } .ds-btn-secondary:focus-visible { outline:3px solid rgba(91,141,232,.42); outline-offset:3px; }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "custom",
+      "description": "The persistent mode control; the thumb uses the active theme's primary color.",
+      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Switch to light mode\" aria-pressed=\"true\"><span class=\"ds-theme-thumb\"></span><span aria-hidden=\"true\">☀</span><span aria-hidden=\"true\">☾</span></button>",
+      "css": ".ds-theme-toggle { position:relative; width:76px; height:44px; padding:6px; display:grid; grid-template-columns:32px 32px; align-items:center; border:1px solid rgba(91,141,232,.32); border-radius:999px; background:rgba(255,255,255,.1); color:#e8edf7; cursor:pointer; } .ds-theme-toggle span:not(.ds-theme-thumb) { position:relative; z-index:1; display:grid; place-items:center; } .ds-theme-thumb { position:absolute; z-index:0; top:8px; left:42px; width:28px; height:28px; border-radius:50%; background:#5b8de8; box-shadow:0 3px 10px rgba(0,0,0,.32); transition:left 260ms cubic-bezier(.16,1,.3,1),background-color 260ms ease; } .ds-theme-toggle:hover { background:rgba(255,255,255,.15); } .ds-theme-toggle:active .ds-theme-thumb { transform:scale(.96); } .ds-theme-toggle:focus-visible { outline:3px solid rgba(91,141,232,.42); outline-offset:3px; }"
+    },
+    {
+      "name": "Portfolio Navigation",
+      "kind": "nav",
+      "description": "A stable identity anchor with quiet section links, an active signal, and a direct contact destination.",
+      "html": "<nav class=\"ds-nav\"><strong>Humberto Axl</strong><div><a class=\"ds-nav-active\" href=\"#home\">HOME</a><a href=\"#experience\">EXPERIENCE</a><a href=\"#skills\">SKILLS</a><a href=\"#about\">ABOUT</a><a href=\"#contact\">CONTACT</a></div></nav>",
+      "css": ".ds-nav { min-height:64px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; color:#e8edf7; background:rgba(13,21,38,.56); border-bottom:1px solid rgba(91,141,232,.07); box-shadow:0 5px 18px rgba(2,3,12,.13); backdrop-filter:blur(16px) saturate(125%); font-family:Inter,sans-serif; } .ds-nav strong { font-size:1.25rem; } .ds-nav div { display:flex; align-items:center; gap:8px; } .ds-nav a { position:relative; padding:20px 10px; color:#8fa3c0; text-decoration:none; font-size:.82rem; font-weight:500; } .ds-nav a:hover { color:#e8edf7; } .ds-nav a:active { color:#5b8de8; } .ds-nav a:focus-visible { outline:2px solid #5b8de8; outline-offset:-4px; } .ds-nav .ds-nav-active { color:#5b8de8; } .ds-nav .ds-nav-active::after { content:''; position:absolute; left:20%; right:20%; bottom:12px; height:2px; border-radius:8px; background:#5b8de8; }"
+    },
+    {
+      "name": "Skill Chip",
+      "kind": "chip",
+      "refersTo": "chip-outline",
+      "description": "Compact technical metadata with deliberately low visual weight.",
+      "html": "<span class=\"ds-skill-chip\" tabindex=\"0\">TypeScript</span>",
+      "css": ".ds-skill-chip { display:inline-flex; align-items:center; min-height:24px; padding:3px 8px; color:#8fa3c0; background:transparent; border:1px solid rgba(143,163,192,.28); border-radius:999px; font:500 .72rem/1.3 Inter,sans-serif; transition:border-color .2s ease,color .2s ease; } .ds-skill-chip:hover { color:#e8edf7; border-color:rgba(91,141,232,.65); } .ds-skill-chip:active { background:rgba(91,141,232,.08); } .ds-skill-chip:focus-visible { outline:2px solid #5b8de8; outline-offset:2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Two-State Observatory",
+    "overview": "The portfolio has one professional identity with two deliberate atmospheric states. Dark mode is an orbital studio: deep navy, crisp blue signals, evidence-led composition, and a restrained field of stars behind the hero. Light mode is a daylight observatory: warm paper and quiet plum, expressed through the same Inter typography and hierarchy so the theme switch feels seamless.\n\nSpace is a framing device, not the page's permanent wallpaper. Its strongest expression is confined to the full-viewport hero. Below the first viewport, calm semantic surfaces and conventional interactions keep experience, skills, biography, and contact easy for hiring visitors to scan.",
+    "keyCharacteristics": [
+      "One information architecture with distinctly authored dark and light expressions",
+      "An evidence-led, full-viewport hero with prominent identity, portrait, and calls to action",
+      "Cosmic atmosphere concentrated in the hero rather than spread across the document",
+      "Rounded, softly layered professional modules with fine semantic borders",
+      "A direct, inline contact form that keeps the visitor's draft visible throughout submission"
+    ],
+    "rules": [
+      {
+        "name": "The Theme Owns the Signal Rule",
+        "body": "Orbital Blue owns global actions in dark mode and Daylight Plum owns them in light mode. The toggle thumb must use the active theme's primary color; timeline accents never replace it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Content Above Cosmos Rule",
+        "body": "Star photography and stellar glows belong behind the dark hero. Text and controls always resolve to semantic theme colors and dependable contrast.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stable Identity Rule",
+        "body": "Theme changes never swap font family, weight, line height, tracking, or layout; only color and atmosphere transition.",
+        "section": "typography"
+      },
+      {
+        "name": "The Scale Carries Evidence Rule",
+        "body": "Use meaningful changes in scale and weight to establish scan order; do not decorate evidence copy to compete with the hero.",
+        "section": "typography"
+      },
+      {
+        "name": "The Clear Flight Path Rule",
+        "body": "Professional evidence comes first, a concise biography adds context, and contact closes the page with an immediate next action.",
+        "section": "layout"
+      },
+      {
+        "name": "The Ambient, Not Floating Rule",
+        "body": "Shadows suggest environmental light; borders and tonal shifts still define the structure.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Orbits Are Rare Rule",
+        "body": "Full circles mark identity, position, or state. Do not turn every container or icon into a floating bubble.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep professional evidence and calls to action clearer than the star layer.",
+      "Do confine star photography and the strongest space atmosphere to the dark hero.",
+      "Do use the optional hero image slot and preserve its CSS fallback until Humberto supplies the final asset.",
+      "Do keep the Inter hierarchy identical across light and dark modes.",
+      "Do keep the contact form visible in the page and preserve the visitor's draft during submission.",
+      "Do keep email-provider credentials server-side in the Netlify function.",
+      "Do use responsive semantic theme colors rather than hard-coded control states."
+    ],
+    "donts": [
+      "Don't turn the interface into a spaceship dashboard or introduce a Mission Log section.",
+      "Don't spread stars, nebulae, or space imagery behind the whole document.",
+      "Don't introduce glowing code windows, floating technology logos, glass cards everywhere, or gratuitous gradients.",
+      "Don't use bounce or elastic easing for navigation or theme changes.",
+      "Don't let every surface become rounded, elevated, and independently framed; preserve hierarchy through grouping and negative space."
+    ]
+  }
+}
