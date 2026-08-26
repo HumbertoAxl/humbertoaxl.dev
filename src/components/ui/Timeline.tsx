@@ -17,7 +17,10 @@ import { RESUME_CONTENT_WIDTH } from '../../theme';
 
 interface Job {
   company: string;
+  employer?: string;
+  role: string;
   bullets: string[];
+  stack: string;
   from: string;
   to: string;
   current: boolean;
@@ -27,14 +30,17 @@ interface Job {
 
 const jobs: Job[] = [
   {
-    company: 'Western Australian Public Sector',
+    company: 'WAIRC & DPIRD',
+    employer: 'Western Australian Government',
+    role: 'Software Developer',
     bullets: [
-      'Designed and implemented new features for Angular-based web applications.',
-      'Enhanced .NET APIs by introducing new calls and improving existing ones.',
-      'Collaborated closely with customers to understand their needs, translating them into technical requirements.',
-      'Supported older applications in VB and C#.',
-      'Provided support to less experienced developers through pair coding sessions and constructive code reviews.',
+      'Started at the Department of Primary Industries and Regional Development (DPIRD), maintaining and enhancing a legacy C# application while learning Western Australian Government IT processes.',
+      'Develop and maintain public-facing and internal applications supporting application lodgement, assessment, and case-management workflows across Angular frontends and C#/.NET backends.',
+      'Maintain and enhance a legacy VB.NET case-management application across desktop, backend, and database layers, including substantial changes to core case and party-management workflows.',
+      'Work directly with non-technical stakeholders to refine requirements and translate business processes into user stories, technical tasks, and production functionality.',
+      'Contribute to code reviews, technical guidance, application modernisation, framework upgrades, Azure DevOps CI/CD pipelines, and releases.',
     ],
+    stack: 'Angular; TypeScript; C#; .NET; Entity Framework; VB.NET; SQL Server; Azure DevOps',
     from: 'Feb 2023',
     to: 'Present',
     current: true,
@@ -43,12 +49,13 @@ const jobs: Job[] = [
   },
   {
     company: 'Calytrix Technologies',
+    role: 'Software Engineer',
     bullets: [
-      'Developed military-grade equipment overlays for customer documentation used around the world.',
-      'Built single-page applications using Vue.js.',
-      'Conducted code reviews, wrote bug reports, and performed general testing of coworkers\' pull requests.',
-      'Created and updated software plugins, user interfaces and scripts.',
+      'Developed interactive functionality for a 3D defence simulation and synthetic training environment, using JavaScript to connect user interfaces and simulated behaviours with platform APIs.',
+      'Translated technical documentation and project requirements into simulation functionality, including interactive controls, optics, reticles, and visual overlays, while resolving software defects.',
+      'Contributed to supporting web applications using Vue.js, consuming existing APIs to develop interactive training and simulation interfaces.',
     ],
+    stack: 'Vue.js; JavaScript; HTML; CSS; REST APIs',
     from: 'Feb 2022',
     to: 'Feb 2023',
     current: false,
@@ -56,21 +63,54 @@ const jobs: Job[] = [
     Icon: CodeIcon,
   },
   {
-    company: 'Ferimport',
+    company: 'Ferimport Comércio',
+    role: 'Junior Developer',
     bullets: [
-      'Created web scraping scripts for efficient product data extraction.',
-      'Optimized catalogue import process by utilizing the website\'s e-commerce platform API, resulting in significant time savings.',
-      'Utilized web scraping for data gathering, improving sales strategies.',
-      'Developed and maintained a web app integrated with e-commerce platform.',
-      'Provided training and support to the registration team for utilizing solutions made by the development team.',
+      'Progressed from manual catalogue work to software development after building automation workflows that enabled supplier catalogues containing thousands of products to be processed in bulk, replacing a workflow of approximately 20 products per day.',
+      'Built Puppeteer-based browser automation and internal tools to extract, transform, and upload product data and images in bulk through e-commerce platform APIs.',
+      'Automated competitor pricing and location-dependent delivery analysis and supported the catalogue team with training and troubleshooting.',
     ],
+    stack: 'JavaScript; Node.js; Puppeteer; REST APIs; VTEX; Web Scraping',
     from: 'Nov 2020',
     to: 'Dec 2021',
     current: false,
-    color: '#00c9a7',
+    color: '#00a88e',
     Icon: LanguageIcon,
   },
 ];
+
+const BulletList = ({ bullets }: { bullets: string[] }) => (
+  <Box component="ul" sx={{ m: 0, pl: 2.25 }}>
+    {bullets.map((bullet) => (
+      <Typography
+        key={bullet}
+        component="li"
+        variant="body2"
+        sx={{
+          color: 'text.secondary',
+          fontSize: { xs: '0.925rem', md: '0.95rem' },
+          lineHeight: 1.72,
+          mb: 0.55,
+          pl: 0.35,
+        }}
+      >
+        {bullet}
+      </Typography>
+    ))}
+  </Box>
+);
+
+const Stack = ({ children }: { children: string }) => (
+  <Typography
+    variant="body2"
+    sx={{ mt: 1.25, color: 'text.secondary', lineHeight: 1.6 }}
+  >
+    <Box component="span" sx={{ color: 'text.primary', fontWeight: 700 }}>
+      Stack:{' '}
+    </Box>
+    {children}
+  </Typography>
+);
 
 export default function Timeline() {
   return (
@@ -85,17 +125,13 @@ export default function Timeline() {
           flex: { xs: 0, md: 0.22 },
           display: { xs: 'none', md: 'flex' },
         },
-      }}>
-      {jobs.map((job, idx) => (
+      }}
+    >
+      {jobs.map((job, index) => (
         <TimelineItem key={job.company} sx={{ minHeight: 0 }}>
-          {/* Date column */}
           <TimelineOppositeContent
-            sx={{
-              pr: 3,
-              py: 0,
-              flexDirection: 'column',
-              justifyContent: 'center',
-            }}>
+            sx={{ pr: 3, py: 0, flexDirection: 'column', justifyContent: 'center' }}
+          >
             <Typography variant="body2" sx={{ color: 'primary.main', fontWeight: 700 }}>
               {job.from}
             </Typography>
@@ -104,14 +140,14 @@ export default function Timeline() {
             </Typography>
           </TimelineOppositeContent>
 
-          {/* Dot + connector */}
           <TimelineSeparator
             sx={{
               display: { xs: 'none', md: 'flex' },
               position: 'relative',
               width: 28,
               alignItems: 'center',
-            }}>
+            }}
+          >
             <TimelineDot
               sx={{
                 m: 0,
@@ -129,33 +165,22 @@ export default function Timeline() {
               sx={{
                 position: 'absolute',
                 width: 2,
-                top: idx === 0 ? '50%' : -16,
-                bottom: idx === jobs.length - 1 ? '50%' : -16,
+                top: index === 0 ? '50%' : -16,
+                bottom: index === jobs.length - 1 ? '50%' : -16,
                 bgcolor: 'divider',
               }}
             />
           </TimelineSeparator>
 
-          {/* Card */}
           <TimelineContent sx={{ p: 0, pl: { xs: 0, md: 3 } }}>
             <Box
               sx={(theme) => ({
-                bgcolor: alpha(
-                  theme.palette.background.paper,
-                  theme.palette.mode === 'dark' ? 0.42 : 0.86,
-                ),
-                border: '1px solid',
-                borderColor: alpha(
-                  theme.palette.primary.main,
-                  theme.palette.mode === 'dark' ? 0.22 : 0.14,
-                ),
+                bgcolor: 'background.paper',
                 borderRadius: 2,
-                p: { xs: 2, md: 3 },
+                p: { xs: 2.25, md: 3 },
                 position: 'relative',
                 display: { xs: 'block', md: 'flex' },
                 gap: { md: 2 },
-                backdropFilter: 'blur(14px) saturate(120%)',
-                WebkitBackdropFilter: 'blur(14px) saturate(120%)',
                 boxShadow: theme.palette.mode === 'dark'
                   ? '0 16px 44px rgba(3, 2, 16, 0.18)'
                   : '0 12px 32px rgba(54, 45, 63, 0.08)',
@@ -163,17 +188,17 @@ export default function Timeline() {
                   content: '""',
                   display: { xs: 'block', md: 'none' },
                   position: 'absolute',
-                  left: 35.5,
+                  left: 37.5,
                   width: '1px',
                   bgcolor: 'divider',
-                  ...(idx === 0
-                    ? { top: 36, bottom: -24 }
-                    : idx === jobs.length - 1
-                      ? { top: -24, height: 60 }
+                  ...(index === 0
+                    ? { top: 38, bottom: -24 }
+                    : index === jobs.length - 1
+                      ? { top: -24, height: 62 }
                       : { top: -24, bottom: -24 }),
                 },
-              })}>
-              {/* Icon */}
+              })}
+            >
               <Box
                 sx={{
                   flexShrink: 0,
@@ -184,19 +209,20 @@ export default function Timeline() {
                   display: { xs: 'none', md: 'flex' },
                   alignItems: 'center',
                   justifyContent: 'center',
-                }}>
+                }}
+              >
                 <job.Icon sx={{ color: job.color, fontSize: 24 }} />
               </Box>
 
-              {/* Content */}
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 <Box
                   sx={{
-                    display: { xs: 'flex', md: 'none' },
+                    display: 'flex',
                     alignItems: 'flex-start',
-                    gap: 1.5,
-                    mb: 1.75,
-                  }}>
+                    gap: { xs: 1.5, md: 0 },
+                    mb: { xs: 2.25, md: 2.5 },
+                  }}
+                >
                   <Box
                     sx={{
                       flexShrink: 0,
@@ -204,61 +230,55 @@ export default function Timeline() {
                       height: 40,
                       borderRadius: 1.25,
                       bgcolor: alpha(job.color, 0.12),
-                      display: 'flex',
+                      display: { xs: 'flex', md: 'none' },
                       alignItems: 'center',
                       justifyContent: 'center',
                       position: 'relative',
                       zIndex: 1,
-                    }}>
+                    }}
+                  >
                     <job.Icon sx={{ color: job.color, fontSize: 22 }} />
                   </Box>
-                  <Box sx={{ minWidth: 0, pt: 0.15 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
-                      {job.company}
+                  <Box sx={{ minWidth: 0, flex: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, flexWrap: 'wrap' }}>
+                      <Typography component="h3" variant="h6" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
+                        {job.company}
+                      </Typography>
+                      {job.current && (
+                        <Chip
+                          label="Present"
+                          size="small"
+                          sx={{
+                            display: { xs: 'none', md: 'inline-flex' },
+                            bgcolor: alpha(job.color, 0.08),
+                            color: job.color,
+                            fontWeight: 700,
+                            fontSize: '0.75rem',
+                            height: 22,
+                            border: `1px solid ${alpha(job.color, 0.3)}`,
+                          }}
+                        />
+                      )}
+                    </Box>
+                    <Typography variant="body2" sx={{ mt: 0.6, color: 'text.secondary', fontWeight: 600 }}>
+                      {job.employer ? `${job.employer} · ${job.role}` : job.role}
                     </Typography>
                     <Typography
                       variant="caption"
-                      sx={{ display: 'block', mt: 0.65, color: job.color, fontWeight: 700 }}>
-                      {job.from} {'\u2014'} {job.to}
+                      sx={{
+                        display: { xs: 'block', md: 'none' },
+                        mt: 0.6,
+                        color: job.color,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {job.from} - {job.to}
                     </Typography>
                   </Box>
                 </Box>
-                <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1.5, flexWrap: 'wrap', mb: 1.5 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 700, lineHeight: 1.2 }}>
-                    {job.company}
-                  </Typography>
-                  {job.current && (
-                    <Chip
-                      label="Present"
-                      size="small"
-                      sx={{
-                        display: { xs: 'none', md: 'inline-flex' },
-                        bgcolor: alpha(job.color, 0.08),
-                        color: job.color,
-                        fontWeight: 700,
-                        fontSize: '0.68rem',
-                        height: 20,
-                        border: `1px solid ${alpha(job.color, 0.3)}`,
-                      }}
-                    />
-                  )}
-                </Box>
-                <Box component="ul" sx={{ m: 0, pl: 2 }}>
-                  {job.bullets.map((b, i) => (
-                    <Typography
-                      key={i}
-                      component="li"
-                      variant="body2"
-                      sx={{
-                        color: 'text.secondary',
-                        fontSize: { xs: '0.925rem', md: '0.95rem' },
-                        lineHeight: 1.75,
-                        mb: 0.35,
-                      }}>
-                      {b}
-                    </Typography>
-                  ))}
-                </Box>
+
+                <BulletList bullets={job.bullets} />
+                <Stack>{job.stack}</Stack>
               </Box>
             </Box>
           </TimelineContent>

@@ -20,7 +20,7 @@ Humberto is a full-stack developer with more than five years of experience acros
 
 ## Operating Context
 
-Most visitors will review the site quickly as part of sourcing or candidate evaluation. The home page introduces Humberto, summarizes his professional experience and skills, and provides additional personal context. A dedicated `/resume` route supports deeper evaluation.
+Most visitors will review the site quickly as part of sourcing or candidate evaluation. The home page introduces Humberto, summarizes his professional experience and skills, adds a concise biography, and ends with a direct contact path. A dedicated `/resume` route supports deeper evaluation.
 
 ## Capabilities and Constraints
 

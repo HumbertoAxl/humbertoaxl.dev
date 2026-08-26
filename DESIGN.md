@@ -1,28 +1,28 @@
 ---
 name: Humberto Axl Portfolio
-description: A credible developer portfolio shaped as a quietly confident orbital workshop.
+description: A credible developer portfolio expressed as an orbital studio after dark and a daylight observatory in light mode.
 colors:
   orbital-blue: "#5b8de8"
   midnight-navy: "#0d1526"
+  hero-midnight: "#071022"
   module-navy: "#1a2540"
   starlight: "#e8edf7"
   signal-slate: "#8fa3c0"
   daylight-plum: "#6b5278"
   daylight-ink: "#27232a"
   daylight-paper: "#f3f0e9"
-  daylight-module: "#ebe7e3"
+  daylight-module: "#e4ded9"
   daylight-muted: "#514e55"
   mission-blue: "#3d6ad6"
   nebula-violet: "#7c4fc8"
-  telemetry-mint: "#00c9a7"
-  deep-space-core: "#060212"
-  deep-space-halo: "#100826"
+  telemetry-mint: "#00a88e"
 typography:
-  display:
+  identity:
     fontFamily: "Inter, sans-serif"
-    fontSize: "clamp(3.2rem, 6vw, 5rem)"
+    fontSize: "clamp(3.25rem, 6.5vw, 6rem)"
     fontWeight: 800
-    lineHeight: 1.05
+    lineHeight: 0.98
+    letterSpacing: "-0.035em"
   headline:
     fontFamily: "Inter, sans-serif"
     fontSize: "clamp(1.25rem, 2vw, 1.5rem)"
@@ -56,21 +56,42 @@ spacing:
   lg: "48px"
   xl: "64px"
 components:
-  button-primary:
+  button-dark-primary:
     backgroundColor: "{colors.orbital-blue}"
-    textColor: "{colors.daylight-paper}"
+    textColor: "#ffffff"
     typography: "{typography.body}"
     rounded: "{rounded.lg}"
-    padding: "16px 40px"
-  button-secondary:
+    padding: "14px 36px"
+    height: "52px"
+  button-light-primary:
+    backgroundColor: "{colors.daylight-plum}"
+    textColor: "#ffffff"
+    typography: "{typography.body}"
+    rounded: "{rounded.lg}"
+    padding: "14px 36px"
+    height: "52px"
+  button-dark-secondary:
     backgroundColor: "transparent"
     textColor: "{colors.orbital-blue}"
     typography: "{typography.body}"
     rounded: "{rounded.lg}"
-    padding: "16px 40px"
+    padding: "14px 36px"
+    height: "52px"
+  button-light-secondary:
+    backgroundColor: "transparent"
+    textColor: "{colors.daylight-plum}"
+    typography: "{typography.body}"
+    rounded: "{rounded.lg}"
+    padding: "14px 36px"
+    height: "52px"
   panel-dark:
     backgroundColor: "{colors.module-navy}"
     textColor: "{colors.starlight}"
+    rounded: "{rounded.lg}"
+    padding: "24px"
+  panel-light:
+    backgroundColor: "{colors.daylight-module}"
+    textColor: "{colors.daylight-ink}"
     rounded: "{rounded.lg}"
     padding: "24px"
   chip-outline:
@@ -85,130 +106,152 @@ components:
 
 ## Overview
 
-**Creative North Star: "The Orbital Workshop"**
+**Creative North Star: "The Two-State Observatory"**
 
-The portfolio feels like a working observatory rather than a sci-fi spectacle: technically precise, quietly confident, exploratory, and human. A deep-space canvas provides atmosphere while clear type, direct language, and conventional interaction patterns keep the hiring evidence easy to evaluate.
+The portfolio has one professional identity with two deliberate atmospheric states. Dark mode is an orbital studio: deep navy, crisp blue signals, evidence-led composition, and a restrained field of stars behind the hero. Light mode is a daylight observatory: warm paper and quiet plum, expressed through the same typography and hierarchy so the switch feels like a change of atmosphere rather than a different website.
 
-The visual system earns identity through a small number of committed signals: orbital blue, a procedural Milky Way panorama, circular geometry around the portrait, and restrained module-like surfaces. The dark-mode background is a document-sized WebGL scene generated at the page's actual dimensions, so visitors naturally scroll through one continuous composition with no bitmap dependency, parallax, fixed viewport, or scroll-driven animation. A diagonal blue-white galaxy and dark dust lane carry the dominant visual weight; sparse purple nebula filaments sit within large areas of calm midnight space. The scene redraws only when the viewport or document height changes, preserving its composition as content grows and across narrow, standard, and ultrawide aspect ratios.
+Space is a framing device, not the page's permanent wallpaper. Its strongest expression is confined to the hero, where an optional user-supplied star photograph can replace the built-in CSS fallback. Below the first viewport, calm semantic surfaces, readable Inter, and conventional interactions keep experience, skills, biography, and contact easy for hiring visitors to scan.
 
 **Key Characteristics:**
-- Deep navy environment with cool blue navigational emphasis
-- Oversized, tightly set display type paired with highly legible body copy
-- Sparse circular and orbital motifs concentrated around identity moments
-- Soft tonal layering, fine borders, and restrained ambient lift
-- A responsive light mode with selective plum signals, neutral surfaces, and a subtle technical grid
+- One information architecture with distinctly authored dark and light expressions
+- An evidence-led, full-viewport hero with prominent identity, portrait, and calls to action
+- Cosmic atmosphere concentrated in the hero rather than spread across the document
+- Rounded, softly layered professional modules with fine semantic borders
+- A direct, inline contact form that keeps the visitor's draft visible throughout submission
 
 ## Colors
 
-The primary palette combines dark astronomical neutrals with one clear blue signal; job-specific accents distinguish timeline entries without competing with the portfolio identity.
+Dark mode combines astronomical neutrals with one cool blue signal; light mode translates the same hierarchy into warm paper and restrained plum. Timeline colors remain local evidence markers.
 
 ### Primary
-- **Orbital Blue:** The main signal for Humberto's name, calls to action, active navigation, section labels, and focus moments.
-- **Daylight Plum:** Replaces Orbital Blue as the global signal in light mode, preserving the cosmic identity without tinting every surface purple.
+- **Orbital Blue:** Global action, active navigation, focus, and identity signal in dark mode.
+- **Daylight Plum:** Global action, active navigation, focus, and identity signal in light mode.
 
 ### Secondary
-- **Mission Blue:** Marks the current public-sector role and its associated timeline details.
-- **Nebula Violet:** Distinguishes the Calytrix role.
-- **Telemetry Mint:** Distinguishes the Ferimport role.
+- **Mission Blue:** The public-sector role and its associated timeline details.
+- **Nebula Violet:** The Calytrix role and its associated timeline details.
+- **Telemetry Mint:** The Ferimport role and its associated timeline details.
 
 ### Neutral
-- **Midnight Navy:** Default dark canvas behind the page.
-- **Module Navy:** Raised panels, cards, and grouped content in dark mode.
-- **Starlight:** Primary text on dark surfaces.
-- **Signal Slate:** Secondary copy and subdued navigation on dark surfaces.
-- **Daylight Paper / Daylight Module / Daylight Ink / Daylight Muted:** A warm moon-dust canvas, neutral stone panels, primary text, and higher-contrast supporting copy that reduce glare without looking washed out.
-- **Deep Space Core / Deep Space Halo:** The radial atmosphere behind the generated star field; these remain background-only colors.
+- **Midnight Navy / Hero Midnight:** The dark document canvas and the slightly deeper hero ground.
+- **Module Navy:** Grouped evidence and form surfaces in dark mode.
+- **Starlight / Signal Slate:** Primary and supporting content on dark surfaces.
+- **Daylight Paper / Daylight Module:** The warm light-mode canvas and its grouped surfaces.
+- **Daylight Ink / Daylight Muted:** Primary and supporting content on light surfaces.
 
-**The Single Signal Rule.** Orbital Blue owns global actions in dark mode and Daylight Plum owns them in light mode. Timeline accents may identify individual roles, but they do not replace the active theme's global signal.
+**The Theme Owns the Signal Rule.** Orbital Blue owns global actions in dark mode and Daylight Plum owns them in light mode. The toggle thumb must use the active theme's primary color; timeline accents never replace it.
 
-**The Content Above Cosmos Rule.** Stellar colors belong to the atmospheric layer. Text and controls must always resolve to the core semantic palette for dependable contrast.
+**The Content Above Cosmos Rule.** Star photography and stellar glows belong behind the dark hero. Text and controls always resolve to semantic theme colors and dependable contrast.
 
 ## Typography
 
-**Display Font:** Inter (sans-serif fallback)
+**Identity Font:** Inter (sans-serif fallback)
+
 **Body Font:** Inter (sans-serif fallback)
 
-**Character:** One variable sans-serif family keeps the system contemporary and technically direct. Identity comes from decisive scale, weight, tracking, and rhythm rather than a decorative font pairing.
+**Character:** Compact, technical, and decisive in both themes. Color, atmosphere, and light change between modes while typography stays fixed for a seamless transition.
 
 ### Hierarchy
-- **Display:** Extra-bold, responsive, and tightly led. Reserved for the two-line hero introduction and other rare identity-defining statements.
-- **Headline:** Bold, uppercase, and widely tracked. Used for role labels and section headings as navigational coordinates.
-- **Title:** Bold and compact. Used for employers and skill categories.
-- **Body:** Regular with generous leading. Keep descriptive copy comfortably scannable and constrain long prose to roughly 65–75 characters per line.
-- **Label:** Small and bold. Used for dates, statuses, chips, and compact supporting metadata.
+- **Identity:** Extra-bold, responsive, tightly tracked, and tightly led. Reserved for the hero name and role in both themes.
+- **Headline:** Bold, uppercase, and widely tracked. Used for section coordinates.
+- **Title:** Bold and compact. Used for employers, skill groups, and contact hierarchy.
+- **Body:** Regular with generous leading. Keep professional narrative near 65–75 characters per line where practical.
+- **Label:** Small and bold. Used for dates, statuses, chips, evidence metadata, and photo-placeholder notes.
 
-**The Scale Carries Identity Rule.** Keep Inter straightforward; create hierarchy through real changes in scale and weight, not gratuitous italics, serif cameos, or decorative effects.
+**The Stable Identity Rule.** Theme changes never swap font family, weight, line height, tracking, or layout; only color and atmosphere transition.
+
+**The Scale Carries Evidence Rule.** Use meaningful changes in scale and weight to establish scan order; do not decorate evidence copy to compete with the hero.
 
 ## Layout
 
-The page uses a maximum-width application shell with full-width atmospheric backgrounds. The hero is a two-column composition on desktop—roughly seven parts narrative to five parts portrait—and stacks into one column on small screens. Major sections use 48px vertical space on small screens and 64px on desktop, with 24px small-screen and 48px desktop horizontal gutters.
+The page uses a full-width atmosphere around a bounded content shell. On desktop, the hero is a seven-to-five composition with narrative first and the portrait second; on small screens, the portrait moves above centered copy. The hero fills at least the first viewport below navigation at every breakpoint, expanding naturally when mobile content needs more room.
 
-Content sections center within bounded measures: experience uses a narrow timeline, skills use a responsive four-column grid, and the biography sits inside a broad panel with a narrower reading column. Mobile layouts remove timeline chrome that depends on horizontal space, move dates into each card, collapse navigation into a drawer, and retain the theme toggle.
+Major sections use bounded reading widths and one shared vertical rhythm. The first content section begins one full interval after the hero; neighboring sections split that same interval evenly between the preceding bottom edge and following top edge. The resulting content-to-next-header interval matches the header-to-content interval: 32px on mobile and 48px on desktop. The title dot and spacing separate major sections without full-width divider lines. Skills alone uses fine internal rules between adjacent categories, never after the final category. Experience remains a focused timeline, skills use a responsive grid, and the biography uses a conventional single reading column: two professional paragraphs followed by two personal paragraphs with equal visual weight. Contact closes the page with one centered form and a quiet trailing interval.
 
-**The Clear Flight Path Rule.** The visual journey remains hero, evidence, capabilities, and personal context. Atmospheric elements may guide the eye but never interrupt that hiring sequence.
+Navigation remains 64px high. Desktop presents the name, section links, and theme toggle; compact layouts use a menu, centered name, and persistent toggle. Background atmosphere outside the hero is deliberately quiet so the sequence remains hero, experience, skills, about, then contact.
+
+**The Clear Flight Path Rule.** Professional evidence comes first, a concise biography adds context, and contact closes the page with an immediate next action.
 
 ## Elevation & Depth
 
-Depth is softly layered rather than dramatically raised. Panels sit on tonal contrast with a fine divider; resting shadows are faint and become wider ambient glows on hover. The navigation adds translucent blur and a low shadow only after scrolling. The portrait receives the strongest ambient glow because it is the primary human identity asset.
+Depth comes from tonal layering, fine borders, restrained gradients, and ambient light. Resting surfaces stay nearly flat. The scrolled navigation adds translucent blur and a low shadow; the portrait receives the strongest ambient shadow because the real photograph is the primary human asset. Form fields use the semantic paper surface and clear outlines rather than detached cards.
 
 ### Shadow Vocabulary
-- **Panel Rest:** `0 2px 8px rgba(0,0,0,0.05)` for grouped cards and the biography panel.
-- **Panel Hover:** `0 8px 24px rgba(0,0,0,0.1)` for interactive lift without a floating-card effect.
-- **Navigation Scrolled:** `0 2px 16px rgba(0,0,0,0.08)` paired with background blur.
-- **Portrait Orbit:** A broad, low-opacity Orbital Blue glow paired with a small neutral shadow.
+- **Panel Rest** (`0 2px 8px rgba(0,0,0,0.05)`): Quiet separation for grouped evidence.
+- **Panel Hover** (`0 8px 24px rgba(0,0,0,0.1)`): Restrained response for interactive surfaces.
+- **Navigation Dark** (`0 5px 18px rgba(2,3,12,0.13)`): Low ambient separation after scrolling in dark mode.
+- **Navigation Light** (`0 4px 14px rgba(39,35,42,0.07)`): Warm, shallow separation after scrolling in light mode.
+- **Portrait Dark** (`0 18px 60px rgba(91,141,232,0.20)`): The strongest dark-mode identity glow.
+- **Portrait Light** (`0 18px 52px rgba(39,35,42,0.13)`): A soft editorial portrait lift without a glow effect.
 
-**The Ambient, Not Floating Rule.** Shadows suggest light cast through the environment; borders and tonal shifts still define the structure.
+**The Ambient, Not Floating Rule.** Shadows suggest environmental light; borders and tonal shifts still define the structure.
 
 ## Shapes
 
-Panels and action controls use gently rounded corners built from the 8px theme unit, most often 16px on prominent surfaces. Compact icon modules use 10–12px corners. Chips are pill-shaped. Circles are reserved for the portrait, orbit ring, stars, timeline markers, and section waypoints, giving the identity a coherent orbital geometry.
+Prominent actions and panels use 16px corners from the 8px theme unit. Chips and the theme control are pills. The portrait stays circular in both themes and uses one slowly rotating dashed circular frame. Circles remain purposeful markers for the portrait, section coordinates, timeline positions, and the toggle thumb.
 
-**The Orbits Are Rare Rule.** Full circles mark identity, position, or status. Do not turn every container or icon into a floating bubble.
+**The Orbits Are Rare Rule.** Full circles mark identity, position, or state. Do not turn every container or icon into a floating bubble.
 
 ## Components
 
 ### Buttons
-- **Shape:** Generously padded with 16px corners.
-- **Primary:** Solid Orbital Blue with white text; used for the highest-value next action.
-- **Secondary:** Transparent with an Orbital Blue outline and label; used for a quieter parallel action.
-- **Hover / Focus:** State changes stay quick and controlled. Preserve an obvious keyboard focus indicator and avoid elastic or bouncing motion.
+- **Shape:** Generously padded, 52px high, with 16px corners.
+- **Primary:** Solid active-theme primary with white text. The hero uses it for “View Experience.”
+- **Secondary:** Transparent, semantically tinted, and outlined. The hero uses it for “Contact me.”
+- **Hover / Focus:** Use restrained tonal shifts and a clearly visible 3px focus ring; avoid bouncing or elastic movement.
+
+### Theme Toggle
+- **Style:** A 76×44px outlined pill with a 28px circular thumb and paired sun/moon icons.
+- **State:** The thumb slides between modes over 260ms and always matches the active theme's primary color.
+- **Accessibility:** Keep a 44px minimum target, state-aware label, pressed state, and keyboard focus indicator.
 
 ### Chips
-- **Style:** Compact outlined pills for skills, with low visual weight and secondary text color.
-- **State:** Filled translucent role accents are reserved for real status, such as “Present.”
+- **Style:** Compact outlined pills for technical metadata, with low visual weight and secondary text color.
+- **State:** Filled translucent role accents remain reserved for real statuses such as “Present.”
 
 ### Cards / Containers
 - **Corner Style:** Gently rounded, usually 16px.
 - **Background:** Module Navy in dark mode and Daylight Module in light mode.
-- **Shadow Strategy:** Almost flat at rest; ambient lift on hover where the card is interactive or timeline-focused.
-- **Border:** One-pixel semantic divider to keep structure legible over the atmospheric background.
-- **Internal Padding:** 16px on compact mobile layouts and 24–48px on larger grouped surfaces.
+- **Shadow Strategy:** Almost flat at rest; ambient lift only where interaction or focus warrants it.
+- **Border:** One-pixel semantic divider for legibility across both themes.
+- **Internal Padding:** 16px on compact mobile layouts and 24–48px on grouped desktop surfaces.
 
 ### Navigation
-- **Style:** A 64px app bar with the name as a stable identity anchor, uppercase section controls, an animated blue active underline, and a light/dark toggle.
-- **Scrolled State:** A highly translucent canvas color, soft backdrop blur, low ambient shadow, and a barely visible divider that never reads as a solid rule.
-- **Mobile:** Hamburger drawer, centered name, and persistent theme toggle.
+- **Style:** A 64px app bar with the name as a stable identity anchor, uppercase section controls, a theme-colored active underline, and the light/dark toggle. At the top of the home page it is completely transparent over the full-bleed hero.
+- **Scrolled State:** A translucent canvas color, 16px backdrop blur, low ambient shadow, and faint divider.
+- **Mobile:** Hamburger drawer, centered name, persistent theme toggle, and the same Home → Experience → Skills → About → Contact order.
+
+### Hero
+
+The hero is the signature identity component. It pairs a large name and role with honest production-focused copy, two clear actions, and a circular portrait inside one slowly rotating dashed frame. The background is full-bleed while all hero content remains inside the bounded application shell. Dark mode may use the optional path configured in `src/visualAssets.ts`; if no image is supplied, lightweight CSS stars and restrained orbital light preserve the composition. Light mode uses a warm, quiet field of plotted dots without diagonal guide lines. Every section below the hero sits on a plain semantic background.
 
 ### Experience Timeline
 
-The timeline is the principal evidence component. Desktop uses a date rail, colored marker, connector, and content panel; mobile moves the date into the panel and removes the rail. Each employer owns one restrained accent color, while shared typography and surfaces keep the entries within the same system.
+Desktop uses a date rail, colored marker, connector, and content panel; mobile moves the date into the panel and removes the rail. WAIRC and DPIRD share one Western Australian Government entry, preserving employment continuity while the bullet sequence explains the move between departments. Other employers retain their own local accents while shared typography and surfaces preserve system unity.
+
+### Contact Form
+
+Contact is an always-visible form inside the page rather than a modal or disclosure. It asks only for the visitor's name, email, and message; the delivery subject is generated server-side. Name and email form one compact identity group above the full-width message field. Input remains intact after network errors and after successful submission, validation is inline, and status changes are announced accessibly. Field captions stay hidden until there is an actionable validation error, keeping the resting form compact. The public fallback routes are `contact@humbertoaxl.dev` and LinkedIn; personal email and phone details never appear on the site.
 
 ### Section Coordinate
 
-Section headings are centered, uppercase, widely tracked, and followed by a small Orbital Blue dot. This repeats the language of a plotted coordinate without adding literal space-themed labels.
+Section headings are centered, uppercase, widely tracked, and followed by a small theme-colored dot. This creates a subtle plotted-coordinate rhythm without literal dashboard labels.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep professional evidence and calls to action visually clearer than the star field.
-- **Do** concentrate cosmic expression in the canvas, portrait orbit, section waypoints, and restrained ambient light.
-- **Do** use the responsive dark and light semantic palettes rather than hard-coding text colors inside components.
-- **Do** preserve generous body leading and bounded reading widths for fast recruiter scanning.
-- **Do** use job accent colors only within the experience timeline.
+- **Do** keep professional evidence and calls to action clearer than the star layer.
+- **Do** confine star photography and the strongest space atmosphere to the dark hero.
+- **Do** use the optional hero image slot and preserve its CSS fallback until Humberto supplies the final asset.
+- **Do** keep Inter and the same typographic metrics across both hero states.
+- **Do** keep the contact draft visible through validation, loading, success, and failure states.
+- **Do** keep ZeptoMail credentials server-side in Netlify environment variables.
+- **Do** use responsive semantic theme colors rather than hard-coded control states.
 
 ### Don't:
-- **Don't** turn the interface into a literal spaceship dashboard or cover content with decorative telemetry.
-- **Don't** introduce generic developer-site tropes such as glowing code windows, floating technology logos, glass cards everywhere, or gratuitous gradients.
-- **Don't** use thick one-sided card borders as a default accent treatment.
-- **Don't** use bounce or elastic easing for navigational motion.
+- **Don't** turn the interface into a spaceship dashboard or introduce a “Mission Log” section.
+- **Don't** spread stars, nebulae, or space imagery behind the whole document.
+- **Don't** expose Humberto's personal email address or telephone number in the public interface.
+- **Don't** introduce glowing code windows, floating technology logos, glass cards everywhere, or gratuitous gradients.
+- **Don't** use bounce or elastic easing for navigation or theme changes.
 - **Don't** let every surface become rounded, elevated, and independently framed; preserve hierarchy through grouping and negative space.

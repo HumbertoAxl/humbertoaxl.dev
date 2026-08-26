@@ -7,10 +7,22 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies and generated output
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Environment files and local overrides
 *.local
+.env
+.env.*
+!.env.example
+
+# Netlify CLI local state (keep netlify/functions source-controlled)
+.netlify/
 
 # Editor directories and files
 .vscode/*
@@ -23,5 +35,14 @@ dist-ssr
 *.sln
 *.sw?
 
-# AI related
-.claude
+# Local AI-tool configuration and vendored tool bundles
+.agents/
+.claude/
+.codex/
+CLAUDE.local.md
+
+# Keep the shared design sidecar; ignore Impeccable caches and generated reviews
+.impeccable/*
+!.impeccable/design.json
+.impeccable-live.json
+**/.impeccable-live/

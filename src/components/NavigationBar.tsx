@@ -17,6 +17,7 @@ import Button from '@mui/material/Button';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import type { PaletteMode } from '@mui/material';
+import { colorModeTransition } from '../theme';
 
 interface Props {
   window?: () => Window;
@@ -25,18 +26,29 @@ interface Props {
 }
 
 const NAVBAR_HEIGHT = 64;
+const SECTION_READING_RATIO = 0.3;
+const MAX_SECTION_READING_OFFSET = 200;
 const drawerWidth = 240;
 const navItems = [
   { label: 'Home',       sectionId: 'home'       },
   { label: 'Experience', sectionId: 'experience'  },
   { label: 'Skills',     sectionId: 'skills'      },
   { label: 'About',      sectionId: 'about'       },
+  { label: 'Contact',    sectionId: 'contact'     },
 ];
 
 function getActiveSection(): string {
   if (window.location.pathname !== '/') return '';
 
-  const readingLine = NAVBAR_HEIGHT + (window.innerHeight - NAVBAR_HEIGHT) * 0.45;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  if (maxScroll > 0 && window.scrollY >= maxScroll - 2) {
+    return navItems[navItems.length - 1].sectionId;
+  }
+
+  const readingLine = NAVBAR_HEIGHT + Math.min(
+    MAX_SECTION_READING_OFFSET,
+    (window.innerHeight - NAVBAR_HEIGHT) * SECTION_READING_RATIO,
+  );
   let closestSection = navItems[0].sectionId;
   let closestDistance = Number.POSITIVE_INFINITY;
 
@@ -151,15 +163,70 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
   }, [holdActiveSection, location, navigate]);
 
   const container = windowProp !== undefined ? () => windowProp().document.body : undefined;
+  const brandNameColor = mode === 'dark' ? 'common.white' : 'primary.main';
 
   // JSX variable — avoids the "component created during render" error
   const themeToggle = (
     <IconButton
       onClick={toggleColorMode}
       aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-pressed={mode === 'dark'}
       title={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      sx={{ width: 44, height: 44, color: 'text.primary' }}>
-      {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+      sx={(theme) => ({
+        width: 76,
+        height: 44,
+        p: '6px',
+        borderRadius: 999,
+        border: '1px solid',
+        borderColor: alpha(theme.palette.primary.main, mode === 'dark' ? 0.32 : 0.26),
+        bgcolor: mode === 'dark'
+          ? alpha(theme.palette.common.white, 0.1)
+          : alpha(theme.palette.common.white, 0.76),
+        color: 'text.primary',
+        overflow: 'hidden',
+        transition: colorModeTransition('color', 'background-color', 'border-color', 'box-shadow'),
+        '&:hover': {
+          bgcolor: mode === 'dark'
+            ? alpha(theme.palette.common.white, 0.15)
+            : alpha(theme.palette.common.white, 0.94),
+        },
+      })}>
+      <Box
+        sx={{
+          position: 'relative',
+          width: 64,
+          height: 32,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 32px)',
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 2,
+            left: mode === 'dark' ? 34 : 2,
+            width: 28,
+            height: 28,
+            borderRadius: '50%',
+            bgcolor: 'primary.main',
+            boxShadow: (theme) =>
+              '0 3px 10px ' + alpha(theme.palette.common.black, mode === 'dark' ? 0.32 : 0.18),
+            transition: colorModeTransition('left', 'background-color', 'box-shadow'),
+          }}
+        />
+        <Box sx={{ zIndex: 1, display: 'grid', placeItems: 'center' }}>
+          <LightModeIcon
+            aria-hidden
+            sx={{ fontSize: 18, color: mode === 'light' ? 'common.white' : 'text.secondary' }}
+          />
+        </Box>
+        <Box sx={{ zIndex: 1, display: 'grid', placeItems: 'center' }}>
+          <DarkModeIcon
+            aria-hidden
+            sx={{ fontSize: 17, color: mode === 'dark' ? 'common.white' : 'text.secondary' }}
+          />
+        </Box>
+      </Box>
     </IconButton>
   );
 
@@ -179,7 +246,7 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
       transform: activeSection === sectionId
         ? 'translateX(-50%) scaleX(1)'
         : 'translateX(-50%) scaleX(0)',
-      transition: 'transform 0.2s ease',
+      transition: colorModeTransition('transform', 'background-color'),
     },
   });
 
@@ -215,8 +282,8 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
             ? alpha(theme.palette.background.default, theme.palette.mode === 'dark' ? 0.56 : 0.78)
             : 'transparent',
           backgroundImage: 'none',
-          backdropFilter: scrolled ? 'blur(16px) saturate(125%)' : 'blur(0px) saturate(100%)',
-          WebkitBackdropFilter: scrolled ? 'blur(16px) saturate(125%)' : 'blur(0px) saturate(100%)',
+          backdropFilter: scrolled ? 'blur(16px) saturate(125%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(16px) saturate(125%)' : 'none',
           borderBottom: '1px solid',
           borderColor: scrolled
             ? alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.07 : 0.06)
@@ -227,7 +294,13 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
               : '0 4px 14px rgba(39, 35, 42, 0.07)'
             : 'none',
           color: 'text.primary',
-          transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+          transition: colorModeTransition(
+            'background-color',
+            'backdrop-filter',
+            'box-shadow',
+            'border-color',
+            'color',
+          ),
           '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))': {
             backgroundColor: scrolled ? alpha(theme.palette.background.default, 0.88) : 'transparent',
           },
@@ -241,20 +314,20 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
             aria-label="Open navigation menu"
             aria-controls="mobile-navigation"
             aria-expanded={mobileOpen}
-            sx={{ width: 44, height: 44, display: { sm: 'none' }, color: 'text.primary' }}>
+            sx={{ width: 44, height: 44, display: { md: 'none' }, color: 'text.primary' }}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" sx={{ display: { xs: 'block', sm: 'none' }, color: 'text.primary', fontWeight: 700, position: 'absolute', left: '50%', transform: 'translateX(-50%)', pointerEvents: 'none' }}>
+          <Typography variant="h6" sx={{ display: { xs: 'block', md: 'none' }, color: brandNameColor, fontWeight: 700, position: 'absolute', left: '50%', transform: 'translateX(-50%)', pointerEvents: 'none' }}>
             Humberto Axl
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { sm: 'none' } }} />
-          <Box sx={{ display: { sm: 'none' } }}>{themeToggle}</Box>
+          <Box sx={{ flexGrow: 1, display: { md: 'none' } }} />
+          <Box sx={{ display: { md: 'none' } }}>{themeToggle}</Box>
 
           {/* Desktop: name | nav buttons | theme toggle */}
-          <Typography variant="h6" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: 'text.primary', fontWeight: 700 }}>
+          <Typography variant="h6" sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' }, color: brandNameColor, fontWeight: 700 }}>
             Humberto Axl
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: 0.5 }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.5 }}>
             {navItems.map((item) => (
               <Button
                 key={item.label}
@@ -278,7 +351,7 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
         onClose={() => setMobileOpen(false)}
         ModalProps={{ keepMounted: true }}
         slotProps={{ paper: { component: 'nav', 'aria-label': 'Mobile navigation' } }}
-        sx={{ display: { xs: 'block', sm: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth } }}>
+        sx={{ display: { xs: 'block', md: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth } }}>
         {drawer}
       </Drawer>
 

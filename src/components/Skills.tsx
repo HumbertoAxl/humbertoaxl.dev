@@ -2,22 +2,22 @@ import { Box, Typography } from '@mui/material';
 import {
   SiAngular,
   SiCss,
-  SiDocker,
   SiDotnet,
   SiGit,
   SiHtml5,
-  SiJira,
-  SiMui,
+  SiJavascript,
+  SiMysql,
   SiNodedotjs,
   SiReact,
   SiTypescript,
+  SiVuedotjs,
 } from 'react-icons/si';
-import { VscAzure, VscFileCode } from 'react-icons/vsc';
+import { VscAzureDevops } from 'react-icons/vsc';
 import { TbApi } from 'react-icons/tb';
-import { LuDatabase, LuGitPullRequest, LuRefreshCw, LuUsers, LuWorkflow } from 'react-icons/lu';
+import { LuBoxes, LuDatabase, LuGitPullRequest, LuRefreshCw, LuWorkflow } from 'react-icons/lu';
 import type { IconType } from 'react-icons';
 import SectionHeader from './ui/SectionHeader';
-import { RESUME_CONTENT_WIDTH } from '../theme';
+import { RESUME_CONTENT_WIDTH, SECTION_VERTICAL_PADDING } from '../theme';
 
 interface Skill {
   label: string;
@@ -35,43 +35,47 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { label: 'React', icons: [SiReact] },
       { label: 'TypeScript', icons: [SiTypescript] },
+      { label: 'JavaScript', icons: [SiJavascript] },
       { label: 'Angular', icons: [SiAngular] },
+      { label: 'Vue.js', icons: [SiVuedotjs] },
       { label: 'HTML & CSS', icons: [SiHtml5, SiCss] },
-      { label: 'Material-UI', icons: [SiMui] },
     ],
   },
   {
     category: 'Backend',
     skills: [
       { label: '.NET / C#', icons: [SiDotnet] },
+      { label: 'Entity Framework', icons: [LuBoxes] },
       { label: 'Node.js', icons: [SiNodedotjs] },
       { label: 'REST APIs', icons: [TbApi] },
-      { label: 'VB.NET', icons: [VscFileCode] },
     ],
   },
   {
-    category: 'Tools & Cloud',
+    category: 'Databases',
     skills: [
-      { label: 'Git', icons: [SiGit] },
-      { label: 'Docker', icons: [SiDocker] },
-      { label: 'Azure', icons: [VscAzure] },
       { label: 'SQL Server', icons: [LuDatabase] },
-      { label: 'Jira', icons: [SiJira] },
+      { label: 'MySQL', icons: [SiMysql] },
     ],
   },
   {
-    category: 'Practices',
+    category: 'DevOps & Tools',
     skills: [
-      { label: 'Agile / Scrum', icons: [LuRefreshCw] },
-      { label: 'Code Review', icons: [LuGitPullRequest] },
-      { label: 'Pair Programming', icons: [LuUsers] },
+      { label: 'Azure DevOps', icons: [VscAzureDevops] },
+      { label: 'Git', icons: [SiGit] },
       { label: 'CI/CD', icons: [LuWorkflow] },
+    ],
+  },
+  {
+    category: 'Development Practices',
+    skills: [
+      { label: 'Code Review', icons: [LuGitPullRequest] },
+      { label: 'Agile Development', icons: [LuRefreshCw] },
     ],
   },
 ];
 
 const Skills = () => (
-  <Box id="skills" sx={{ py: { xs: 6, md: 8 }, px: { xs: 3, md: 6 } }}>
+  <Box id="skills" sx={{ py: SECTION_VERTICAL_PADDING, px: { xs: 3, md: 6 } }}>
     <SectionHeader title="Skills" />
 
     <Box
@@ -82,8 +86,6 @@ const Skills = () => (
         my: 0,
         p: 0,
         listStyle: 'none',
-        borderTop: '1px solid',
-        borderColor: 'divider',
       }}
     >
       {skillCategories.map(({ category, skills }) => (
@@ -100,6 +102,8 @@ const Skills = () => (
             py: { xs: 3, md: 4 },
             borderBottom: '1px solid',
             borderColor: 'divider',
+            '&:first-of-type': { pt: 0 },
+            '&:last-of-type': { pb: 0, borderBottom: 'none' },
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, alignSelf: 'start' }}>

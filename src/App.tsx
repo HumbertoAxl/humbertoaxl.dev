@@ -2,31 +2,33 @@ import * as React from 'react';
 import NavigationBar from './components/NavigationBar';
 import HomePage from './pages/HomePage';
 import ResumePage from './pages/ResumePage';
-import SpaceBackground from './components/SpaceBackground';
-import LightBackground from './components/LightBackground';
-import { Box, Container, CssBaseline, GlobalStyles } from '@mui/material';
+import ThemeBackground from './components/ThemeBackground';
+import { Box, CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import './index.css';
-import { createAppTheme } from './theme';
+import { colorModeTransition, createAppTheme } from './theme';
 import type { PaletteMode } from '@mui/material';
 
 const App = () => {
-  const [mode, setMode] = React.useState<PaletteMode>('dark');
-  const theme = createAppTheme(mode);
+  const [mode, setMode] = React.useState<PaletteMode>(() => {
+    const savedMode = window.localStorage.getItem('portfolio-color-mode');
+    if (savedMode === 'light' || savedMode === 'dark') return savedMode;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  });
+  const theme = React.useMemo(() => createAppTheme(mode), [mode]);
   const toggleColorMode = () =>
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+
+  React.useEffect(() => {
+    window.localStorage.setItem('portfolio-color-mode', mode);
+  }, [mode]);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* Expose the fixed canvas when dark — body background would otherwise cover z-index:-1 */}
-      {mode === 'dark' && (
-        <GlobalStyles styles={{ body: { backgroundColor: 'transparent !important' } }} />
-      )}
-      <SpaceBackground />
-      <LightBackground />
-      <Container maxWidth="xl" disableGutters>
+      <ThemeBackground />
+      <Box sx={{ position: 'relative', zIndex: 1 }}>
         <Router>
           <Box
             component="a"
@@ -44,7 +46,7 @@ const App = () => {
               fontWeight: 700,
               textDecoration: 'none',
               transform: 'translateY(-160%)',
-              transition: 'transform 0.2s ease-out',
+              transition: colorModeTransition('transform', 'background-color', 'color'),
               '&:focus': { transform: 'translateY(0)' },
             }}>
             Skip to content
@@ -57,7 +59,7 @@ const App = () => {
             </Routes>
           </Box>
         </Router>
-      </Container>
+      </Box>
     </ThemeProvider>
   );
 };
