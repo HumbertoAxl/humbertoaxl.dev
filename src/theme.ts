@@ -33,7 +33,7 @@ export const createAppTheme = (mode: PaletteMode) =>
       },
       text: {
         primary: mode === 'light' ? '#27232a' : '#e8edf7',
-        secondary: mode === 'light' ? '#514e55' : '#b4bdca',
+        secondary: mode === 'light' ? '#514e55' : '#ccd3dd',
       },
     },
     typography: {
@@ -52,7 +52,7 @@ export const createAppTheme = (mode: PaletteMode) =>
           body: {
             transition: colorModeTransition('background-color', 'color'),
           },
-          '.MuiBox-root, .MuiTypography-root, .MuiPaper-root, .MuiButton-root, .MuiIconButton-root, .MuiOutlinedInput-root, .MuiInputLabel-root, .MuiFormHelperText-root, .MuiSvgIcon-root, .MuiDivider-root': {
+          '.MuiBox-root, .MuiTypography-root, .MuiPaper-root, .MuiButton-root, .MuiIconButton-root, .MuiOutlinedInput-root, .MuiFilledInput-root, .MuiInputLabel-root, .MuiFormHelperText-root, .MuiSvgIcon-root, .MuiDivider-root': {
             transitionProperty: 'color, background-color, border-color, box-shadow, opacity',
             transitionDuration: 'var(--color-mode-transition-duration)',
             transitionTimingFunction: 'var(--color-mode-transition-easing)',
@@ -84,7 +84,21 @@ export const createAppTheme = (mode: PaletteMode) =>
           },
         },
       },
-      MuiOutlinedInput: {
+      MuiFilledInput: {
+        styleOverrides: {
+          root: {
+            backgroundColor: mode === 'light' ? '#e4ded9' : '#1a2540',
+            borderRadius: 8,
+            '&:hover': {
+              backgroundColor: mode === 'light' ? '#e4ded9' : '#1a2540',
+            },
+            '&.Mui-focused': {
+              backgroundColor: mode === 'light' ? '#e4ded9' : '#1a2540',
+            },
+          },
+        },
+      },
+      MuiInputBase: {
         styleOverrides: {
           input: {
             '&:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active': {

@@ -194,6 +194,7 @@ const Contact = () => {
             <TextField
               fullWidth
               required
+              variant="filled"
               name="name"
               label="Name"
               value={values.name}
@@ -205,13 +206,13 @@ const Contact = () => {
               disabled={status === 'sending'}
               sx={{
                 '& .MuiInputBase-root': { fontSize: '1rem' },
-                '& .MuiOutlinedInput-root': { bgcolor: 'background.paper' },
               }}
             />
 
             <TextField
               fullWidth
               required
+              variant="filled"
               type="email"
               name="email"
               label="Email"
@@ -224,7 +225,6 @@ const Contact = () => {
               disabled={status === 'sending'}
               sx={{
                 '& .MuiInputBase-root': { fontSize: '1rem' },
-                '& .MuiOutlinedInput-root': { bgcolor: 'background.paper' },
               }}
             />
           </Box>
@@ -232,6 +232,7 @@ const Contact = () => {
           <TextField
             fullWidth
             required
+            variant="filled"
             multiline
             minRows={7}
             maxRows={14}
@@ -247,7 +248,6 @@ const Contact = () => {
             sx={{
               mt: 2.5,
               '& .MuiInputBase-root': { fontSize: '1rem', lineHeight: 1.65 },
-              '& .MuiOutlinedInput-root': { bgcolor: 'background.paper' },
             }}
           />
 
@@ -313,7 +313,7 @@ const Contact = () => {
           sx={{
             maxWidth: 760,
             mx: 'auto',
-            mt: 2.5,
+            mt: 3.5,
             fontStyle: 'normal',
             display: 'flex',
             flexDirection: 'column',
@@ -323,7 +323,7 @@ const Contact = () => {
           }}
         >
           <Typography
-            variant="body2"
+            variant="body1"
             sx={{ color: 'text.secondary', fontWeight: 650, textAlign: 'center' }}
           >
             Prefer to contact me directly?

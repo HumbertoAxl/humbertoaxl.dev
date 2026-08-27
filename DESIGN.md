@@ -7,7 +7,7 @@ colors:
   hero-midnight: "#071022"
   module-navy: "#1a2540"
   starlight: "#e8edf7"
-  signal-slate: "#8fa3c0"
+  signal-slate: "#ccd3dd"
   daylight-plum: "#6b5278"
   daylight-ink: "#27232a"
   daylight-paper: "#f3f0e9"
@@ -174,7 +174,7 @@ Navigation remains 64px high. Desktop presents the name, section links, and them
 
 ## Elevation & Depth
 
-Depth comes from tonal layering, fine borders, restrained gradients, and ambient light. Resting surfaces stay nearly flat. The scrolled navigation adds translucent blur and a low shadow; the portrait receives the strongest ambient shadow because the real photograph is the primary human asset. Form fields use the semantic paper surface and clear outlines rather than detached cards.
+Depth comes from tonal layering, fine borders, restrained gradients, and ambient light. Resting surfaces stay nearly flat. The scrolled navigation adds translucent blur and a low shadow; the portrait receives the strongest ambient shadow because the real photograph is the primary human asset. Form fields use the semantic paper surface and Material UI's filled treatment rather than detached cards.
 
 ### Shadow Vocabulary
 - **Panel Rest** (`0 2px 8px rgba(0,0,0,0.05)`): Quiet separation for grouped evidence.

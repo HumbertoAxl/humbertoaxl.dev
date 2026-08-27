@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import {
   SiAngular,
+  SiClaude,
   SiCss,
   SiDotnet,
   SiGit,
@@ -12,6 +13,7 @@ import {
   SiTypescript,
   SiVuedotjs,
 } from 'react-icons/si';
+import { AiFillOpenAI } from 'react-icons/ai';
 import { VscAzureDevops } from 'react-icons/vsc';
 import { TbApi } from 'react-icons/tb';
 import { LuBoxes, LuDatabase, LuGitPullRequest, LuRefreshCw, LuWorkflow } from 'react-icons/lu';
@@ -63,6 +65,13 @@ const skillCategories: SkillCategory[] = [
       { label: 'Azure DevOps', icons: [VscAzureDevops] },
       { label: 'Git', icons: [SiGit] },
       { label: 'CI/CD', icons: [LuWorkflow] },
+    ],
+  },
+  {
+    category: 'AI-Assisted Development',
+    skills: [
+      { label: 'Claude', icons: [SiClaude] },
+      { label: 'Codex', icons: [AiFillOpenAI] },
     ],
   },
   {
