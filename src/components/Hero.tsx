@@ -1,4 +1,5 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
+import { Box, Button, Grid, Skeleton, Typography } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import profilePic from '@/assets/profile-pic.png';
 import { HERO_STAR_BACKGROUND } from '../visualAssets';
@@ -62,6 +63,40 @@ const Hero = () => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
   const reduceMotion = useReducedMotion();
+  const portraitRef = useRef<HTMLImageElement>(null);
+  const [portraitStatus, setPortraitStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+
+  useEffect(() => {
+    const portrait = portraitRef.current;
+    if (!portrait) return;
+    let cancelled = false;
+
+    const showError = () => {
+      if (!cancelled) setPortraitStatus('error');
+    };
+    const revealPortrait = async () => {
+      try {
+        await portrait.decode();
+        if (!cancelled) setPortraitStatus('ready');
+      } catch {
+        showError();
+      }
+    };
+
+    portrait.addEventListener('load', revealPortrait);
+    portrait.addEventListener('error', showError);
+    // Cached images can finish before the effect attaches the load listener.
+    if (portrait.complete) {
+      if (portrait.naturalWidth > 0) void revealPortrait();
+      else showError();
+    }
+
+    return () => {
+      cancelled = true;
+      portrait.removeEventListener('load', revealPortrait);
+      portrait.removeEventListener('error', showError);
+    };
+  }, []);
   const darkHeroBackground = HERO_STAR_BACKGROUND
     ? `linear-gradient(90deg, rgba(5, 12, 28, 0.42), rgba(5, 12, 28, 0.68)),
        url("${HERO_STAR_BACKGROUND}"),
@@ -271,7 +306,9 @@ const Hero = () => {
                 />
 
                 <Box
+                  aria-busy={portraitStatus === 'loading'}
                   sx={{
+                    position: 'relative',
                     width: { xs: 240, sm: 272, md: 340 },
                     height: { xs: 240, sm: 272, md: 340 },
                     borderRadius: '50%',
@@ -284,19 +321,44 @@ const Hero = () => {
                       : '0 18px 52px rgba(39, 35, 42, 0.13)',
                   }}
                 >
+                  {portraitStatus === 'loading' && (
+                    <Skeleton
+                      aria-hidden
+                      variant="circular"
+                      animation={reduceMotion ? false : 'pulse'}
+                      sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+                    />
+                  )}
+                  {portraitStatus === 'error' && (
+                    <Box
+                      role="img"
+                      aria-label="Humberto Axl"
+                      sx={{
+                        position: 'absolute', inset: 0, display: 'grid', placeItems: 'center',
+                        color: 'primary.main', fontSize: { xs: '3rem', md: '4rem' }, fontWeight: 700,
+                      }}
+                    >
+                      HA
+                    </Box>
+                  )}
                   <Box
                     component="img"
+                    ref={portraitRef}
                     src={profilePic}
                     alt="Humberto Axl"
                     width={340}
                     height={340}
                     loading="eager"
                     decoding="async"
+                    aria-hidden={portraitStatus === 'error'}
                     sx={{
+                      display: 'block',
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
                       objectPosition: 'center',
+                      opacity: portraitStatus === 'ready' ? 1 : 0,
+                      transition: `opacity ${reduceMotion ? 150 : 450}ms cubic-bezier(0.16, 1, 0.3, 1)`,
                     }}
                   />
                 </Box>
