@@ -5,48 +5,9 @@ import profilePic from '@/assets/profile-pic.png';
 import { HERO_STAR_BACKGROUND } from '../visualAssets';
 import { motion, useReducedMotion } from 'framer-motion';
 import { colorModeTransition } from '../theme';
+import SkyCanvas from './ui/SkyCanvas';
 
 const NAVBAR_HEIGHT = 64;
-
-// Deterministic, tileable starfield used as the dark-mode hero background until a real
-// photograph is supplied via HERO_STAR_BACKGROUND (see src/visualAssets.ts).
-const STARFIELD_TILE = 280;
-const STARFIELD_BACKGROUND = (() => {
-  let seed = 1337;
-  const rand = () => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
-
-  const dim = Array.from({ length: 26 }, () => {
-    const cx = (rand() * STARFIELD_TILE).toFixed(1);
-    const cy = (rand() * STARFIELD_TILE).toFixed(1);
-    const r = (0.5 + rand() * 1.1).toFixed(2);
-    const o = (0.2 + rand() * 0.55).toFixed(2);
-    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#e8edf7" opacity="${o}"/>`;
-  }).join('');
-
-  const bright = Array.from({ length: 3 }, () => {
-    const cx = (rand() * STARFIELD_TILE).toFixed(1);
-    const cy = (rand() * STARFIELD_TILE).toFixed(1);
-    const r = (1.3 + rand() * 0.6).toFixed(2);
-    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#ffffff" opacity="0.92" filter="url(#starGlow)"/>`;
-  }).join('');
-
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${STARFIELD_TILE}" height="${STARFIELD_TILE}" viewBox="0 0 ${STARFIELD_TILE} ${STARFIELD_TILE}">
-    <defs>
-      <filter id="starGlow" x="-300%" y="-300%" width="700%" height="700%">
-        <feGaussianBlur stdDeviation="0.6" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-    <rect width="${STARFIELD_TILE}" height="${STARFIELD_TILE}" fill="#050b1a"/>
-    ${dim}
-    ${bright}
-  </svg>`;
-
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
-})();
 
 const scrollTo = (sectionId: string) => {
   const el = document.getElementById(sectionId);
@@ -97,17 +58,6 @@ const Hero = () => {
       portrait.removeEventListener('error', showError);
     };
   }, []);
-  const darkHeroBackground = HERO_STAR_BACKGROUND
-    ? `linear-gradient(90deg, rgba(5, 12, 28, 0.42), rgba(5, 12, 28, 0.68)),
-       url("${HERO_STAR_BACKGROUND}"),
-       radial-gradient(ellipse at 42% 38%, ${alpha('#5b8de8', 0.18)}, transparent 35%)`
-    : `linear-gradient(90deg, rgba(5, 12, 28, 0.4), rgba(5, 12, 28, 0.66)),
-       radial-gradient(ellipse at 42% 38%, ${alpha('#5b8de8', 0.22)}, transparent 40%),
-       radial-gradient(ellipse at 82% 78%, ${alpha('#7c4fc8', 0.16)}, transparent 42%),
-       url("${STARFIELD_BACKGROUND}")`;
-  const lightHeroBackground = `radial-gradient(ellipse at 78% 32%, ${alpha('#6b5278', 0.1)}, transparent 31%),
-    radial-gradient(circle, ${alpha('#6b5278', 0.22)} 0 1px, transparent 1.2px)`;
-
   return (
     <Box
       id="home"
@@ -124,49 +74,22 @@ const Hero = () => {
         transition: colorModeTransition('background-color'),
       }}
     >
-      <Box
-        aria-hidden
-        sx={{
-          position: 'absolute',
-          zIndex: -3,
-          inset: 0,
-          opacity: isDark ? 0 : 1,
-          backgroundImage: lightHeroBackground,
-          backgroundSize: 'auto, 28px 28px',
-          backgroundPosition: 'center',
-          transition: colorModeTransition('opacity'),
-          pointerEvents: 'none',
-        }}
-      />
-      <Box
-        aria-hidden
-        sx={{
-          position: 'absolute',
-          zIndex: -2,
-          inset: 0,
-          opacity: isDark ? 1 : 0,
-          backgroundImage: darkHeroBackground,
-          backgroundSize: HERO_STAR_BACKGROUND
-            ? 'auto, cover, auto'
-            : `auto, auto, auto, ${STARFIELD_TILE}px ${STARFIELD_TILE}px`,
-          backgroundPosition: 'center',
-          transition: colorModeTransition('opacity'),
-          pointerEvents: 'none',
-        }}
-      />
-      <Box
-        aria-hidden
-        sx={{
-          position: 'absolute',
-          zIndex: -1,
-          inset: 0,
-          opacity: isDark ? 0.68 : 0,
-          background:
-            'linear-gradient(132deg, transparent 24%, rgba(91, 141, 232, 0.13) 43%, rgba(232, 237, 247, 0.12) 48%, transparent 62%)',
-          transition: colorModeTransition('opacity'),
-          pointerEvents: 'none',
-        }}
-      />
+      {isDark && HERO_STAR_BACKGROUND ? (
+        <Box
+          aria-hidden
+          sx={{
+            position: 'absolute',
+            zIndex: -2,
+            inset: 0,
+            backgroundImage: `linear-gradient(90deg, rgba(5, 12, 28, 0.42), rgba(5, 12, 28, 0.68)), url("${HERO_STAR_BACKGROUND}")`,
+            backgroundSize: 'auto, cover',
+            backgroundPosition: 'center',
+            pointerEvents: 'none',
+          }}
+        />
+      ) : (
+        <SkyCanvas />
+      )}
 
       <motion.div
         initial={reduceMotion ? false : { opacity: 0.78, filter: 'blur(7px)', y: 10 }}
@@ -230,8 +153,12 @@ const Hero = () => {
                 fontSize: { xs: '1rem', md: '1.1rem' },
               }}
             >
-              I build practical software solutions across modern and legacy codebases, translating
-              business requirements into reliable frontend and backend experiences.
+              Full-stack developer with{' '}
+              <Box component="strong" sx={{ color: 'text.primary', fontWeight: 700 }}>
+                six years of experience
+              </Box>{' '}
+              building production software across government, defence simulation, and e-commerce,
+              in both modern and legacy codebases.
             </Typography>
 
             <Box
