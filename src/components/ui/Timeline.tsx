@@ -101,15 +101,29 @@ const BulletList = ({ bullets }: { bullets: string[] }) => (
 );
 
 const Stack = ({ children }: { children: string }) => (
-  <Typography
-    variant="body2"
-    sx={{ mt: 1.25, color: 'text.secondary', lineHeight: 1.6 }}
+  <Box
+    component="ul"
+    aria-label="Stack"
+    sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, m: 0, mt: 2, p: 0, listStyle: 'none' }}
   >
-    <Box component="span" sx={{ color: 'text.primary', fontWeight: 700 }}>
-      Stack:{' '}
-    </Box>
-    {children}
-  </Typography>
+    {children.split(';').map((item) => (
+      <Box component="li" key={item}>
+        <Chip
+          label={item.trim()}
+          size="small"
+          variant="outlined"
+          sx={{
+            height: 26,
+            borderRadius: 999,
+            borderColor: 'divider',
+            color: 'text.secondary',
+            fontSize: '0.8125rem',
+            fontWeight: 500,
+          }}
+        />
+      </Box>
+    ))}
+  </Box>
 );
 
 const MOBILE_GAP = 24;
