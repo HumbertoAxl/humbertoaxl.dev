@@ -23,7 +23,7 @@ const AboutMe = () => (
       }}
     >
       <Typography component="p" sx={paragraphStyles}>
-        I'm a full-stack software developer with nearly six years of experience across government,
+        I'm a full-stack software developer with six years of experience across government,
         defence simulation, and e-commerce. My work spans frontend and backend development across
         both modern and legacy codebases.
       </Typography>
