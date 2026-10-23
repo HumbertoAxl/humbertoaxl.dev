@@ -108,9 +108,9 @@ components:
 
 **Creative North Star: "The Two-State Observatory"**
 
-The portfolio has one professional identity with two deliberate atmospheric states. Dark mode is an orbital studio: deep navy, crisp blue signals, evidence-led composition, and a restrained field of stars behind the hero. Light mode is a daylight observatory: warm paper and quiet plum, expressed through the same typography and hierarchy so the switch feels like a change of atmosphere rather than a different website.
+The portfolio has one professional identity with two deliberate atmospheric states. Dark mode is an orbital studio: deep navy, crisp blue signals, evidence-led composition, and a live, restrained night sky behind the hero. Light mode is a daylight observatory: warm paper and quiet plum, expressed through the same typography and hierarchy so the switch feels like a change of atmosphere rather than a different website.
 
-Space is a framing device, not the page's permanent wallpaper. Its strongest expression is confined to the hero, where an optional user-supplied star photograph can replace the built-in CSS fallback. Below the first viewport, calm semantic surfaces, readable Inter, and conventional interactions keep experience, skills, biography, and contact easy for hiring visitors to scan.
+Space is a framing device, not the page's permanent wallpaper. Its strongest expression is confined to the hero, where a generated star canvas draws the sky and an optional user-supplied star photograph can replace it. Below the first viewport, calm semantic surfaces, readable Inter, and conventional interactions keep experience, skills, biography, and contact easy for hiring visitors to scan.
 
 **Key Characteristics:**
 - One information architecture with distinctly authored dark and light expressions
@@ -141,7 +141,7 @@ Dark mode combines astronomical neutrals with one cool blue signal; light mode t
 
 **The Theme Owns the Signal Rule.** Orbital Blue owns global actions in dark mode and Daylight Plum owns them in light mode. The toggle thumb must use the active theme's primary color; timeline accents never replace it.
 
-**The Content Above Cosmos Rule.** Star photography and stellar glows belong behind the dark hero. Text and controls always resolve to semantic theme colors and dependable contrast.
+**The Content Above Cosmos Rule.** The star canvas, star photography and stellar glows belong behind the hero. Text and controls always resolve to semantic theme colors and dependable contrast.
 
 ## Typography
 
@@ -174,13 +174,13 @@ Navigation remains 64px high. Desktop presents the name, section links, and them
 
 ## Elevation & Depth
 
-Depth comes from tonal layering, fine borders, restrained gradients, and ambient light. Resting surfaces stay nearly flat. The scrolled navigation adds translucent blur and a low shadow; the portrait receives the strongest ambient shadow because the real photograph is the primary human asset. Form fields use the semantic paper surface and Material UI's filled treatment rather than detached cards.
+Depth comes from tonal layering, fine borders, restrained gradients, and ambient light. Resting surfaces stay nearly flat. The scrolled navigation becomes a translucent, blurred floating pill with a low shadow; the portrait receives the strongest ambient shadow because the real photograph is the primary human asset. Form fields use the semantic paper surface and Material UI's filled treatment rather than detached cards.
 
 ### Shadow Vocabulary
 - **Panel Rest** (`0 2px 8px rgba(0,0,0,0.05)`): Quiet separation for grouped evidence.
 - **Panel Hover** (`0 8px 24px rgba(0,0,0,0.1)`): Restrained response for interactive surfaces.
-- **Navigation Dark** (`0 5px 18px rgba(2,3,12,0.13)`): Low ambient separation after scrolling in dark mode.
-- **Navigation Light** (`0 4px 14px rgba(39,35,42,0.07)`): Warm, shallow separation after scrolling in light mode.
+- **Navigation Dark** (`inset 0 1px 0 rgba(232,237,247,0.06), 0 10px 18px -6px rgba(2,3,12,0.6)`): The scrolled pill's highlight and low separation in dark mode.
+- **Navigation Light** (`inset 0 1px 0 rgba(255,253,248,0.7), 0 10px 18px -8px rgba(39,35,42,0.2)`): The scrolled pill's highlight and warm separation in light mode.
 - **Portrait Dark** (`0 18px 60px rgba(91,141,232,0.20)`): The strongest dark-mode identity glow.
 - **Portrait Light** (`0 18px 52px rgba(39,35,42,0.13)`): A soft editorial portrait lift without a glow effect.
 
@@ -207,6 +207,7 @@ Prominent actions and panels use 16px corners from the 8px theme unit. Chips and
 
 ### Chips
 - **Style:** Compact outlined pills for technical metadata, with low visual weight and secondary text color.
+- **Stack chips:** Each experience entry lists its technologies as a row of outlined pills (26px high, divider border, secondary text, weight 500 at 13px) in a `<ul aria-label="Stack">`, replacing the old "Stack:" sentence. The data stays one `;`-separated string per job.
 - **State:** Filled translucent role accents remain reserved for real statuses such as “Present.”
 
 ### Cards / Containers
@@ -217,13 +218,13 @@ Prominent actions and panels use 16px corners from the 8px theme unit. Chips and
 - **Internal Padding:** 16px on compact mobile layouts and 24–48px on grouped desktop surfaces.
 
 ### Navigation
-- **Style:** A 64px app bar with the name as a stable identity anchor, uppercase section controls, a theme-colored active underline, and the light/dark toggle. At the top of the home page it is completely transparent over the full-bleed hero.
-- **Scrolled State:** A translucent canvas color, 16px backdrop blur, low ambient shadow, and faint divider.
+- **Style:** A 64px app bar holding a 52px toolbar, with the name as a stable identity anchor, title-case section links (15px, weight 500, no uppercase transform), a small theme-colored dot under the active link, and the light/dark toggle. At the top of the home page the bar is completely transparent over the full-bleed hero.
+- **Scrolled State:** The toolbar becomes a floating pill (999px radius) over the page: the canvas color at 62% (dark) or 72% (light) opacity, a 16px backdrop blur with 140% saturation, a one-pixel divider border, a faint top inner highlight and a short offset shadow. Without backdrop-filter support it falls back to the solid paper color.
 - **Mobile:** Hamburger drawer, centered name, persistent theme toggle, and the same Home → Experience → Skills → About → Contact order.
 
 ### Hero
 
-The hero is the signature identity component. It pairs a large name and role with honest production-focused copy, two clear actions, and a circular portrait inside one slowly rotating dashed frame. The background is full-bleed while all hero content remains inside the bounded application shell. Dark mode may use the optional path configured in `src/visualAssets.ts`; if no image is supplied, lightweight CSS stars and restrained orbital light preserve the composition. Light mode uses a warm, quiet field of plotted dots without diagonal guide lines. Every section below the hero sits on a plain semantic background.
+The hero is the signature identity component. It pairs a large name and role with honest production-focused copy, two clear actions, and a circular portrait inside one slowly rotating dashed frame. The background is full-bleed while all hero content remains inside the bounded application shell. The sky is drawn by `src/components/ui/SkyCanvas.tsx`, a single `aria-hidden` canvas behind the hero content. In dark mode, seeded stars drift and twinkle at 30fps, a few bright ones carry a small soft glow, the Milky Way crosses the hero as a faint 132° diagonal band with star dust gathered along it, and a soft blue bloom sits behind the name. In light mode the same sky becomes a still chart of ink points, a few in plum, under a faint plum bloom. There is no horizon line. The animation pauses off screen and in hidden tabs, and reduced motion draws one still frame. Dark mode may instead use the optional photograph configured in `src/visualAssets.ts`, under a navy wash. Every section below the hero sits on a plain semantic background.
 
 ### Experience Timeline
 
@@ -242,7 +243,7 @@ Section headings are centered, uppercase, widely tracked, and followed by a smal
 ### Do:
 - **Do** keep professional evidence and calls to action clearer than the star layer.
 - **Do** confine star photography and the strongest space atmosphere to the dark hero.
-- **Do** use the optional hero image slot and preserve its CSS fallback until Humberto supplies the final asset.
+- **Do** use the optional hero image slot and keep the star canvas as its fallback.
 - **Do** keep Inter and the same typographic metrics across both hero states.
 - **Do** keep the contact draft visible through validation, loading, success, and failure states.
 - **Do** keep ZeptoMail credentials server-side in Netlify environment variables.

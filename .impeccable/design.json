@@ -128,13 +128,13 @@
       },
       {
         "name": "navigation-dark",
-        "value": "0 5px 18px rgba(2,3,12,0.13)",
-        "purpose": "Low ambient separation for scrolled dark navigation."
+        "value": "inset 0 1px 0 rgba(232,237,247,0.06), 0 10px 18px -6px rgba(2,3,12,0.6)",
+        "purpose": "Highlight and low separation for the scrolled dark navigation pill."
       },
       {
         "name": "navigation-light",
-        "value": "0 4px 14px rgba(39,35,42,0.07)",
-        "purpose": "Warm shallow separation for scrolled light navigation."
+        "value": "inset 0 1px 0 rgba(255,253,248,0.7), 0 10px 18px -8px rgba(39,35,42,0.2)",
+        "purpose": "Highlight and warm separation for the scrolled light navigation pill."
       },
       {
         "name": "portrait-dark",
@@ -216,9 +216,9 @@
     {
       "name": "Portfolio Navigation",
       "kind": "nav",
-      "description": "A stable identity anchor with quiet section links, an active signal, and a direct contact destination.",
-      "html": "<nav class=\"ds-nav\"><strong>Humberto Axl</strong><div><a class=\"ds-nav-active\" href=\"#home\">HOME</a><a href=\"#experience\">EXPERIENCE</a><a href=\"#skills\">SKILLS</a><a href=\"#about\">ABOUT</a><a href=\"#contact\">CONTACT</a></div></nav>",
-      "css": ".ds-nav { min-height:64px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; color:#e8edf7; background:rgba(13,21,38,.56); border-bottom:1px solid rgba(91,141,232,.07); box-shadow:0 5px 18px rgba(2,3,12,.13); backdrop-filter:blur(16px) saturate(125%); font-family:Inter,sans-serif; } .ds-nav strong { font-size:1.25rem; } .ds-nav div { display:flex; align-items:center; gap:8px; } .ds-nav a { position:relative; padding:20px 10px; color:#8fa3c0; text-decoration:none; font-size:.82rem; font-weight:500; } .ds-nav a:hover { color:#e8edf7; } .ds-nav a:active { color:#5b8de8; } .ds-nav a:focus-visible { outline:2px solid #5b8de8; outline-offset:-4px; } .ds-nav .ds-nav-active { color:#5b8de8; } .ds-nav .ds-nav-active::after { content:''; position:absolute; left:20%; right:20%; bottom:12px; height:2px; border-radius:8px; background:#5b8de8; }"
+      "description": "A stable identity anchor with title-case section links and a small dot under the active one. Clear over the hero; once scrolled it becomes a translucent, blurred floating pill.",
+      "html": "<nav class=\"ds-nav\"><strong>Humberto Axl</strong><div><a class=\"ds-nav-active\" href=\"#home\">Home</a><a href=\"#experience\">Experience</a><a href=\"#skills\">Skills</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></div></nav>",
+      "css": ".ds-nav { min-height:52px; margin:6px 0; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:24px; color:#e8edf7; background:rgba(13,21,38,.62); border:1px solid rgba(232,237,247,.12); border-radius:999px; box-shadow:inset 0 1px 0 rgba(232,237,247,.06),0 10px 18px -6px rgba(2,3,12,.6); backdrop-filter:blur(16px) saturate(140%); font-family:Inter,sans-serif; } .ds-nav strong { font-size:1.25rem; } .ds-nav div { display:flex; align-items:center; gap:4px; } .ds-nav a { position:relative; padding:14px 12px; color:#8fa3c0; text-decoration:none; font-size:.9375rem; font-weight:500; text-transform:none; } .ds-nav a:hover { color:#e8edf7; } .ds-nav a:active { color:#5b8de8; } .ds-nav a:focus-visible { outline:2px solid #5b8de8; outline-offset:-4px; } .ds-nav .ds-nav-active { color:#5b8de8; } .ds-nav .ds-nav-active::after { content:''; position:absolute; left:50%; bottom:4px; width:4px; height:4px; border-radius:50%; background:#5b8de8; transform:translateX(-50%); }"
     },
     {
       "name": "Skill Chip",
@@ -227,11 +227,19 @@
       "description": "Compact technical metadata with deliberately low visual weight.",
       "html": "<span class=\"ds-skill-chip\" tabindex=\"0\">TypeScript</span>",
       "css": ".ds-skill-chip { display:inline-flex; align-items:center; min-height:24px; padding:3px 8px; color:#8fa3c0; background:transparent; border:1px solid rgba(143,163,192,.28); border-radius:999px; font:500 .72rem/1.3 Inter,sans-serif; transition:border-color .2s ease,color .2s ease; } .ds-skill-chip:hover { color:#e8edf7; border-color:rgba(91,141,232,.65); } .ds-skill-chip:active { background:rgba(91,141,232,.08); } .ds-skill-chip:focus-visible { outline:2px solid #5b8de8; outline-offset:2px; }"
+    },
+    {
+      "name": "Stack Chips",
+      "kind": "chip",
+      "refersTo": "chip-outline",
+      "description": "An experience entry's technologies as a row of outlined pills, replacing the \"Stack:\" sentence. The data stays one ;-separated string per job.",
+      "html": "<ul class=\"ds-stack\" aria-label=\"Stack\"><li>Angular</li><li>TypeScript</li><li>C#</li><li>.NET</li></ul>",
+      "css": ".ds-stack { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0; padding:0; list-style:none; } .ds-stack li { display:inline-flex; align-items:center; height:26px; padding:0 10px; color:#8fa3c0; border:1px solid rgba(143,163,192,.28); border-radius:999px; font:500 .8125rem/1 Inter,sans-serif; }"
     }
   ],
   "narrative": {
     "northStar": "The Two-State Observatory",
-    "overview": "The portfolio has one professional identity with two deliberate atmospheric states. Dark mode is an orbital studio: deep navy, crisp blue signals, evidence-led composition, and a restrained field of stars behind the hero. Light mode is a daylight observatory: warm paper and quiet plum, expressed through the same Inter typography and hierarchy so the theme switch feels seamless.\n\nSpace is a framing device, not the page's permanent wallpaper. Its strongest expression is confined to the full-viewport hero. Below the first viewport, calm semantic surfaces and conventional interactions keep experience, skills, biography, and contact easy for hiring visitors to scan.",
+    "overview": "The portfolio has one professional identity with two deliberate atmospheric states. Dark mode is an orbital studio: deep navy, crisp blue signals, evidence-led composition, and a live, restrained night sky behind the hero: drifting stars, the Milky Way as a faint diagonal band, and a soft blue bloom. Light mode is a daylight observatory: warm paper and quiet plum, with the same sky as a still chart of ink points, expressed through the same Inter typography and hierarchy so the theme switch feels seamless.\n\nSpace is a framing device, not the page's permanent wallpaper. Its strongest expression is confined to the full-viewport hero. Below the first viewport, calm semantic surfaces and conventional interactions keep experience, skills, biography, and contact easy for hiring visitors to scan.",
     "keyCharacteristics": [
       "One information architecture with distinctly authored dark and light expressions",
       "An evidence-led, full-viewport hero with prominent identity, portrait, and calls to action",
@@ -279,7 +287,7 @@
     "dos": [
       "Do keep professional evidence and calls to action clearer than the star layer.",
       "Do confine star photography and the strongest space atmosphere to the dark hero.",
-      "Do use the optional hero image slot and preserve its CSS fallback until Humberto supplies the final asset.",
+      "Do use the optional hero image slot and keep the star canvas (src/components/ui/SkyCanvas.tsx) as its fallback.",
       "Do keep the Inter hierarchy identical across light and dark modes.",
       "Do keep the contact form visible in the page and preserve the visitor's draft during submission.",
       "Do keep email-provider credentials server-side in the Netlify function.",
@@ -290,7 +298,8 @@
       "Don't spread stars, nebulae, or space imagery behind the whole document.",
       "Don't introduce glowing code windows, floating technology logos, glass cards everywhere, or gratuitous gradients.",
       "Don't use bounce or elastic easing for navigation or theme changes.",
-      "Don't let every surface become rounded, elevated, and independently framed; preserve hierarchy through grouping and negative space."
+      "Don't let every surface become rounded, elevated, and independently framed; preserve hierarchy through grouping and negative space.",
+      "Don't draw a horizon or planet line across the bottom of the hero sky."
     ]
   }
 }
