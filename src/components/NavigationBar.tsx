@@ -164,6 +164,10 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
 
   const container = windowProp !== undefined ? () => windowProp().document.body : undefined;
   const brandNameColor = mode === 'dark' ? 'common.white' : 'primary.main';
+  const brandNameSx = {
+    color: brandNameColor,
+    fontWeight: 700,
+  } as const;
 
   // JSX variable — avoids the "component created during render" error
   const themeToggle = (
@@ -233,19 +237,22 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
   const navButtonSx = (sectionId: string) => ({
     color: activeSection === sectionId ? 'primary.main' : 'text.secondary',
     fontWeight: 500,
+    fontSize: '0.9375rem',
+    textTransform: 'none' as const,
+    px: 1.5,
     position: 'relative' as const,
     '&::after': {
       content: '""',
       position: 'absolute',
-      bottom: 6,
+      bottom: 4,
       left: '50%',
-      width: '60%',
-      height: 2,
+      width: 4,
+      height: 4,
       backgroundColor: 'primary.main',
-      borderRadius: 1,
+      borderRadius: '50%',
       transform: activeSection === sectionId
-        ? 'translateX(-50%) scaleX(1)'
-        : 'translateX(-50%) scaleX(0)',
+        ? 'translateX(-50%) scale(1)'
+        : 'translateX(-50%) scale(0)',
       transition: colorModeTransition('transform', 'background-color'),
     },
   });
@@ -277,35 +284,40 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
         component="nav"
         aria-label="Primary navigation"
         elevation={0}
-        sx={(theme) => ({
-          backgroundColor: scrolled
-            ? alpha(theme.palette.background.default, theme.palette.mode === 'dark' ? 0.56 : 0.78)
-            : 'transparent',
+        sx={{
+          backgroundColor: 'transparent',
           backgroundImage: 'none',
-          backdropFilter: scrolled ? 'blur(16px) saturate(125%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(16px) saturate(125%)' : 'none',
-          borderBottom: '1px solid',
-          borderColor: scrolled
-            ? alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.07 : 0.06)
-            : 'transparent',
-          boxShadow: scrolled
-            ? theme.palette.mode === 'dark'
-              ? '0 5px 18px rgba(2, 3, 12, 0.13)'
-              : '0 4px 14px rgba(39, 35, 42, 0.07)'
-            : 'none',
+          boxShadow: 'none',
           color: 'text.primary',
-          transition: colorModeTransition(
-            'background-color',
-            'backdrop-filter',
-            'box-shadow',
-            'border-color',
-            'color',
-          ),
-          '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))': {
-            backgroundColor: scrolled ? alpha(theme.palette.background.default, 0.88) : 'transparent',
-          },
-        })}>
-        <Toolbar sx={{ width: '100%', maxWidth: 1500, mx: 'auto', position: 'relative' }}>
+          px: { xs: 1, sm: 2, md: 3 },
+        }}>
+        <Toolbar
+          sx={(theme) => ({
+            width: '100%',
+            maxWidth: 1500,
+            mx: 'auto',
+            my: '6px',
+            position: 'relative',
+            minHeight: { xs: 52, sm: 52 },
+            px: { xs: 1, sm: 1.5, md: 3 },
+            borderRadius: 999,
+            border: '1px solid',
+            borderColor: scrolled ? theme.palette.divider : 'transparent',
+            backgroundColor: scrolled
+              ? alpha(theme.palette.background.default, theme.palette.mode === 'dark' ? 0.62 : 0.72)
+              : 'transparent',
+            backdropFilter: scrolled ? 'blur(16px) saturate(140%)' : 'none',
+            WebkitBackdropFilter: scrolled ? 'blur(16px) saturate(140%)' : 'none',
+            boxShadow: scrolled
+              ? theme.palette.mode === 'dark'
+                ? 'inset 0 1px 0 rgba(232, 237, 247, 0.06), 0 10px 18px -6px rgba(2, 3, 12, 0.6)'
+                : 'inset 0 1px 0 rgba(255, 253, 248, 0.7), 0 10px 18px -8px rgba(39, 35, 42, 0.2)'
+              : 'none',
+            transition: colorModeTransition('background-color', 'border-color', 'box-shadow', 'backdrop-filter'),
+            '@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))': {
+              backgroundColor: scrolled ? theme.palette.background.paper : 'transparent',
+            },
+          })}>
 
           {/* Mobile: hamburger | centered title | theme toggle */}
           <IconButton
@@ -317,14 +329,14 @@ export default function NavigationBar({ window: windowProp, mode, toggleColorMod
             sx={{ width: 44, height: 44, display: { md: 'none' }, color: 'text.primary' }}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" sx={{ display: { xs: 'block', md: 'none' }, color: brandNameColor, fontWeight: 700, position: 'absolute', left: '50%', transform: 'translateX(-50%)', pointerEvents: 'none' }}>
+          <Typography variant="h6" sx={{ ...brandNameSx, display: { xs: 'block', md: 'none' }, position: 'absolute', left: '50%', transform: 'translateX(-50%)', pointerEvents: 'none' }}>
             Humberto Axl
           </Typography>
           <Box sx={{ flexGrow: 1, display: { md: 'none' } }} />
           <Box sx={{ display: { md: 'none' } }}>{themeToggle}</Box>
 
           {/* Desktop: name | nav buttons | theme toggle */}
-          <Typography variant="h6" sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' }, color: brandNameColor, fontWeight: 700 }}>
+          <Typography variant="h6" sx={{ ...brandNameSx, flexGrow: 1, display: { xs: 'none', md: 'block' } }}>
             Humberto Axl
           </Typography>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.5 }}>
